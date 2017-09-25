@@ -16,7 +16,7 @@
 "    -> Spell checking
 "    -> Misc
 "    -> Helper functions
-"
+"    -> Templates
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -414,4 +414,12 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Templates
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap ,des :read ~/.vim/templates/test-describe.js<CR>
+nnoremap ,it :read ~/.vim/templates/test-it.js<CR>
+nnoremap ,comp :read ~/.vim/templates/react-component.js<CR>
 
