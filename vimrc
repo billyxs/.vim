@@ -26,10 +26,11 @@
 call plug#begin('~/.vim/plugged')
 " File system
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-"Plug 'ryanoasis/vim-devicons'
 
 " Text, Editing
 Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
 " GIT,
 "Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -46,10 +47,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 "" Syntax
 Plug 'slim-template/vim-slim'
+Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 "Plug 'othree/javascript-libraries-syntax.vim'
-"Plug 'pangloss/vim-javascript'
 "Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 
@@ -74,6 +75,7 @@ Plug 'encody/nvim'
 Plug 'hzchirs/vim-material'
 Plug 'baines/vim-colorscheme-thaumaturge'
 Plug 'nightsense/carbonized'
+Plug 'tpope/vim-vividchalk'
 call plug#end()
 
 " NERDTree
