@@ -17,6 +17,7 @@
 "    -> Misc
 "    -> Helper functions
 "    -> Templates
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -80,7 +81,7 @@ call plug#end()
 
 " NERDTree
 map <F2> ;NERDTreeToggle<CR>
-nmap ,n ;NERDTreeFind<CR>
+nmap <leader>n ;NERDTreeFind<CR>
 
 " ALE plugin
 let g:ale_completion_enabled = 1
@@ -176,8 +177,9 @@ syntax on
 set termguicolors
 
 " Approved Themes
-"colorscheme spacegray
-colorscheme Turtles
+colorscheme spacegray
+"colorscheme turtles
+"colorscheme vividchalk
 "colorscheme neodark
 "colorscheme hydrangea
 "colorscheme petrel
@@ -417,11 +419,15 @@ autocmd BufReadPost *
 set viminfo^=%
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Templates
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap ,des :read ~/.vim/templates/test-describe.js<CR>
-nnoremap ,it :read ~/.vim/templates/test-it.js<CR>
-nnoremap ,comp :read ~/.vim/templates/react-component.js<CR>
+nnoremap <leader>des :read ~/.vim/templates/test-describe.js<CR>
+nnoremap <leader>it :read ~/.vim/templates/test-it.js<CR>
+nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
+
+nnoremap <leader>imp iimport  from ''<Esc>2Bhi
+nnoremap <leader>imr iimport React from 'react'<CR>
+nnoremap <leader>imc iimport { connect } from 'react-redux'<CR>
+
 
