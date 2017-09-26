@@ -296,32 +296,41 @@ hi CursorLine gui=underline cterm=underline guibg=NONE guifg=NONE
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
+" Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" With a map leader it's possible to do extra key combinations
+let mapleader = ","
+let g:mapleader = ","
+
+" Don't use arrows
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" colon without shift
+noremap : ;
+noremap ; :
+
+" Quick save
+noremap <leader>s :update!<CR>
+imap <leader>s <ESC>:update!
+
+" Esc with jk
+inoremap jk <ESC>
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-" nmap <M-j> mz:m+<cr>`z
-" nmap <M-k> mz:m-2<cr>`z
-" vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-" vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Delete trailing white space on save
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+autocmd BufWrite *.js :call DeleteTrailingWS()
 
 " Home Num Keys
 nnoremap <C-I> :call VimLock(1)<CR>i
@@ -358,8 +367,8 @@ endfunction
 " Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
-" map j gj
-" map k gk
+map j gj
+map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 " map <space> /
@@ -374,11 +383,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Close the current buffer
-" map <leader>bd :Bclose<cr>
+" Switch to the last buffer
+map <leader>b :b#<cr>
 
 " Close all the buffers
-" map <leader>ba :1,1000 bd!<cr>
+map <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
 " map <leader>tn :tabnew<cr>
