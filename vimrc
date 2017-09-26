@@ -51,9 +51,9 @@ Plug 'slim-template/vim-slim'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
+Plug 'jaxbot/semantic-highlight.vim'
 "Plug 'othree/javascript-libraries-syntax.vim'
 "Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'leshill/vim-json'
 
 " Navigation
 Plug 'easymotion/vim-easymotion'
@@ -149,6 +149,9 @@ noremap ; :
 " Quick save
 noremap <leader>s :update!<CR>
 imap <leader>s <ESC>:update!
+
+" Esc with jk
+inoremap jk <ESC>
 
 " copy to clipboard
 set clipboard=unnamed
@@ -426,7 +429,7 @@ nnoremap <leader>des :read ~/.vim/templates/test-describe.js<CR>
 nnoremap <leader>it :read ~/.vim/templates/test-it.js<CR>
 nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
 
-nnoremap <leader>imp iimport  from ''<Esc>2Bhi
+nnoremap <leader>imp iimport  from ''<ESC>2Bhi
 nnoremap <leader>imr iimport React from 'react'<CR>
 nnoremap <leader>imc iimport { connect } from 'react-redux'<CR>
 
