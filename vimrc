@@ -5,8 +5,8 @@
 "    -> Plugins - vim-plug :PlugInstall, :PlugUpdate
 "    -> General
 "    -> VIM user interface
-"    -> Colors and Fonts
 "    -> Files and backups
+"    -> Colors and Fonts
 "    -> Text, tab and indent related
 "    -> Visual mode related
 "    -> Moving around, tabs and buffers
@@ -132,33 +132,17 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" With a map leader it's possible to do extra key combinations
-let mapleader = ","
-let g:mapleader = ","
-
-" Don't use arrows
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-" colon without shift
-noremap : ;
-noremap ; :
-
-" Quick save
-noremap <leader>s :update!<CR>
-imap <leader>s <ESC>:update!
-
-" Esc with jk
-inoremap jk <ESC>
-
 " copy to clipboard
 set clipboard=unnamed
 map <F10> :set pastetoggle<CR>
 
 " Allow mouse scrolling
 set mouse=n
+
+" Search down into folders
+set path+=**
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -289,14 +273,17 @@ set tm=500
 
 " MINE
 " Ignore files
-set wildignore+=*/node_modules,*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/lib,*/.git,*/coverage,*/node_modules,*/tmp/*,*.so,*.swp,*.zip
 
 " Show relative line numbers
 set rnu
+
 " Show line numbers
 set number
+
 " Don't auto indent
 set noai
+
 "Always show current position
 set ruler
 
