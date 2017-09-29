@@ -4,18 +4,13 @@
 " Sections:
 "    -> Plugins - vim-plug :PlugInstall, :PlugUpdate
 "    -> General
-"    -> VIM user interface
 "    -> Files and backups
+"    -> VIM user interface
 "    -> Colors and Fonts
 "    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
+"    -> Text, Writing and formatting
 "    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
+"    -> Moving around, tabs and buffers
 "    -> Templates
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,75 +150,6 @@ set noswapfile " No swap file
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Enable syntax highlighting
-syntax on
-
-set termguicolors
-
-" Approved Themes
-colorscheme spacegray
-"colorscheme turtles
-"colorscheme vividchalk
-"colorscheme neodark
-"colorscheme hydrangea
-"colorscheme petrel
-"colorscheme ayu
-"colorscheme solarized8_dark_flat
-"colorscheme desert
-
-"colorscheme carbonized-dark
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"colorscheme OceanicNext
-
-" Testing themes
-"colorscheme onedark
-"colorscheme marcoloccio
-"colorscheme seattle
-"colorscheme deepsea
-
-
-set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" Glyph Icons
-" set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete\ Mono:h16
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tabs
-set smarttab
-" Use tabs instead of spaces
-set expandtab
-" 1 tab == 2 spaces
-set tabstop=2
-set shiftwidth=2
-
-" tabs to spaces
-retab
-
-" remove trailing spaces on :w
-autocmd BufWritePre * %s/\s\+$//e
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 5 lines to the cursor - when moving vertically using j/k
@@ -293,6 +219,90 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " Underline cursor line
 hi CursorLine gui=underline cterm=underline guibg=NONE guifg=NONE
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable syntax highlighting / better than syntax on
+syntax enable
+
+set termguicolors
+
+" Approved Themes
+colorscheme spacegray
+"colorscheme turtles
+"colorscheme vividchalk
+"colorscheme neodark
+"colorscheme hydrangea
+"colorscheme petrel
+"colorscheme ayu
+"colorscheme solarized8_dark_flat
+"colorscheme desert
+
+"colorscheme carbonized-dark
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
+
+" Testing themes
+"colorscheme onedark
+"colorscheme marcoloccio
+"colorscheme seattle
+"colorscheme deepsea
+
+
+set background=dark
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" autocmd BufNewFile,BufRead *.json set ft=javascript
+" autocmd BufNewFile,BufRead *.js set ft=javascript
+autocmd BufNewFile,BufReadPost *.md set filetype=mkd
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tabs
+set smarttab
+" Use tabs instead of spaces
+set expandtab
+" 1 tab == 2 spaces
+set tabstop=2
+set shiftwidth=2
+
+" tabs to spaces
+retab
+
+" remove trailing spaces on :w
+autocmd BufWritePre * %s/\s\+$//e
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text, Writing and formatting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Autocomplete
+autocmd Filetype markdown setlocal textwidth=78
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -428,5 +438,4 @@ nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
 nnoremap <leader>imp iimport  from ''<ESC>2Bhi
 nnoremap <leader>imr iimport React from 'react'<CR>
 nnoremap <leader>imc iimport { connect } from 'react-redux'<CR>
-
 
