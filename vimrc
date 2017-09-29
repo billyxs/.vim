@@ -138,8 +138,6 @@ set mouse=n
 set path+=**
 
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,7 +224,7 @@ hi CursorLine gui=underline cterm=underline guibg=NONE guifg=NONE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable syntax highlighting / better than syntax on
-syntax enable
+if !exists(g:syntax_on)|syntax enable|endif
 
 set termguicolors
 
