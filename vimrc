@@ -20,6 +20,9 @@
 " Plugins - vim-plug :PlugInstall, :PlugUpdate
 """""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+" Time tracking
+Plug 'wakatime/vim-wakatime'
+
 " File system
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
