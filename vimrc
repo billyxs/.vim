@@ -77,6 +77,10 @@ Plug 'hzchirs/vim-material'
 Plug 'baines/vim-colorscheme-thaumaturge'
 Plug 'nightsense/carbonized'
 Plug 'tpope/vim-vividchalk'
+Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
+Plug 'sjl/badwolf'
+Plug 'dracula/vim'
 call plug#end()
 
 " NERDTree
@@ -245,6 +249,8 @@ endif
 "colorscheme ayu
 "colorscheme solarized8_dark_flat
 "colorscheme desert
+"colorscheme gruvbox
+colorscheme dracula
 
 "colorscheme carbonized-dark
 "let g:oceanic_next_terminal_bold = 1
@@ -256,7 +262,8 @@ endif
 "colorscheme marcoloccio
 "colorscheme seattle
 "colorscheme deepsea
-
+"colorscheme jellybeans
+"colorscheme badwolf
 
 set background=dark
 
