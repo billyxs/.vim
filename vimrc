@@ -45,13 +45,15 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 "" Syntax
-Plug 'slim-template/vim-slim'
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'slim-template/vim-slim'
+" Plug 'pangloss/vim-javascript'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
-Plug 'jaxbot/semantic-highlight.vim'
+" Plug 'jaxbot/semantic-highlight.vim'
 "Plug 'othree/javascript-libraries-syntax.vim'
-"Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'othree/yajs.vim'
+" Plug 'othree/html5.vim'
+Plug 'othree/es.next.syntax.vim'
 
 " Navigation
 Plug 'easymotion/vim-easymotion'
@@ -229,10 +231,12 @@ hi CursorLine gui=underline cterm=underline guibg=NONE guifg=NONE
 " Enable syntax highlighting / better than syntax on
 if !exists(g:syntax_on)|syntax enable|endif
 
-set termguicolors
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Approved Themes
-colorscheme spacegray
+"colorscheme spacegray
 "colorscheme turtles
 "colorscheme vividchalk
 "colorscheme neodark
