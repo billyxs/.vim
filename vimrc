@@ -146,6 +146,8 @@ set mouse=n
 " Search down into folders
 set path+=**
 
+" Set keystroke timeout
+set timeoutlen=100
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files, backups and undo
