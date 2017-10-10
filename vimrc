@@ -458,13 +458,41 @@ set viminfo^=%
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Templates
+" Macros and Templates
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>des :read ~/.vim/templates/test-describe.js<CR>
-nnoremap <leader>it :read ~/.vim/templates/test-it.js<CR>
-nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
+map <leader>a ;Ack!<space>
 
+" Javascript
+" Easy console log
+map <leader>cl oconsole.log('<C-o>p = ',<space><C-o>p)<ESC>b
+
+" Describe block
+map <leader>des odescribe(''<ESC>mma, function() {<CR><CR>})<ESC>`mi
+
+" It block
+map <leader>it oit(''<ESC>mma, function() {<CR><CR>})<ESC>`mi
+
+" Expect equal test
+map <leader>ee oexpect().to.equal()<ESC>^f)i
+
+" Expect statement - jump to set test value
+map <leader>eev ^2f)i''<C-o>h
+map <leader>een ^2f)i
+map <leader>eeu ^2f)iundefined<ESC>
+map <leader>eet ^2f)itrue<ESC>
+map <leader>eef ^2f)ifalse<ESC>
+
+" Import statements
 nnoremap <leader>imp iimport  from ''<ESC>2Bhi
 nnoremap <leader>imr iimport React from 'react'<CR>
 nnoremap <leader>imc iimport { connect } from 'react-redux'<CR>
+
+map <leader>thunk i(dispatch, getState) => { }<ESC>hi<CR><ESC>O
+map <leader>red a.reduce((memo, item) => { }, [])<ESC>F}h
+map <leader>map a.map(item => { })<ESC>F}h
+map <leader>fil a.filter(item => { })<ESC>F}h
+map <leader>ato m`f[r{f]r}``
+map <leader>ota m`f{r[f}r]``
+
+nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
 
