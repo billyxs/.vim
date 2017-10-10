@@ -330,6 +330,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 let mapleader = ","
 let g:mapleader = ","
 
+" Ack search
+map <leader>a ;Ack!<space>
+
 " Don't use arrows
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -460,8 +463,6 @@ set viminfo^=%
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Macros and Templates
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>a ;Ack!<space>
-
 " Javascript
 " Easy console log
 map <leader>cl oconsole.log('<C-o>p = ',<space><C-o>p)<ESC>b
