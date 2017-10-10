@@ -64,6 +64,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 "Plug 'flazz/vim-colorschemes'
+Plug 'rakr/vim-one'
 Plug 'beigebrucewayne/Turtles'
 Plug 'ayu-theme/ayu-vim'
 Plug 'KeitaNakamura/neodark.vim'
@@ -81,6 +82,7 @@ Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'sjl/badwolf'
 Plug 'dracula/vim'
+Plug 'shawncplus/skittles_berry'
 call plug#end()
 
 " NERDTree
@@ -242,7 +244,7 @@ if (has("termguicolors"))
 endif
 
 " Approved Themes
-"colorscheme spacegray
+colorscheme spacegray
 "colorscheme turtles
 "colorscheme vividchalk
 "colorscheme neodark
@@ -252,8 +254,8 @@ endif
 "colorscheme solarized8_dark_flat
 "colorscheme desert
 "colorscheme gruvbox
-colorscheme dracula
-
+"colorscheme dracula
+"colorscheme one " one dark
 "colorscheme carbonized-dark
 "let g:oceanic_next_terminal_bold = 1
 "let g:oceanic_next_terminal_italic = 1
@@ -266,6 +268,7 @@ colorscheme dracula
 "colorscheme deepsea
 "colorscheme jellybeans
 "colorscheme badwolf
+"colorscheme skittles_berry
 
 set background=dark
 
