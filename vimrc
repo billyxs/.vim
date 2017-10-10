@@ -404,14 +404,26 @@ map k gk
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+" Create a newline from where the cursor is
+nmap <leader>j i<CR><ESC>
+
+" Newline with no insert
+nmap oo m`o<ESC>``
+nmap OO m`O<ESC>``
+
 " Smart way to move between windows
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Switch to the last buffer
-map <leader>b :b#<cr>
+" Switch buffers
+" Go to previous bugger
+map <leader>b ;b#<CR>
+" Go to next buffer
+map <leader>bn ;bn<CR>
+" Go to previous buffer
+map <leader>bp ;bp<CR>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
