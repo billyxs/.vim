@@ -414,8 +414,8 @@ map <silent> <leader><cr> :noh<cr>
 nmap <leader>j i<CR><ESC>
 
 " Newline with no insert
-nmap oo m`o<ESC>``
-nmap OO m`O<ESC>``
+nmap oo o<ESC>
+nmap OO O<ESC>
 
 " Smart way to move between windows
 map <C-h> <C-w>h
