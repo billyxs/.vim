@@ -40,6 +40,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 
 " Search
+Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
@@ -107,6 +108,7 @@ let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
 
+let g:ackprg = 'ag --nogroup --nocolor --column'
 noremap <leader>t :Ack!<space>
 
 " vim-jsx - don't require .jsx extension
