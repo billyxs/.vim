@@ -468,7 +468,13 @@ set viminfo^=%
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Javascript
 " Easy console log
-map <leader>cl oconsole.log('<C-o>p = ',<space><C-o>p)<ESC>b
+function! EasyConsoleLog()
+  let word = expand("<cword>")
+  execute "normal! oconsole.log('".word." = ', ".word.")"
+endfunction
+
+nnoremap <leader>log :call EasyConsoleLog()<CR>
+
 
 " Describe block
 map <leader>des odescribe(''<ESC>mma, function() {<CR><CR>})<ESC>`mi
