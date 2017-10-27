@@ -348,7 +348,7 @@ noremap ; :
 
 " Quick save
 noremap <leader>s :update!<CR>
-imap <leader>s <ESC>:update!
+imap <leader>s <ESC><leader>s
 
 " Esc with jk
 inoremap jk <ESC>
