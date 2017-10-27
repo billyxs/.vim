@@ -11,7 +11,7 @@
 "    -> Text, Writing and formatting
 "    -> Editing mappings
 "    -> Moving around, tabs and buffers
-"    -> Templates
+"    -> Macros and Templates
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
