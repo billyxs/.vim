@@ -354,7 +354,7 @@ imap <leader>s <ESC><leader>s
 inoremap jk <ESC>
 
 " Remap VIM 0 to first non-blank character
-map 0 ^
+" map 0 ^
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
