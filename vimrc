@@ -34,7 +34,7 @@ Plug 'tpope/vim-commentary'
 " GIT,
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
-"Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Linting
 Plug 'w0rp/ale'
