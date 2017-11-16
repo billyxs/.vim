@@ -105,9 +105,10 @@ let g:ale_fix_on_save = 1
 " Airline
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
-
-let g:ackprg = 'ag --nogroup --nocolor --column'
-noremap <leader>t :Ack!<space>
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " vim-jsx - don't require .jsx extension
 let g:jsx_ext_required = 0
