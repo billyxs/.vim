@@ -503,3 +503,10 @@ nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
 map <leader>ga ;!git add --all -p<CR>
 map <leader>gp :!git pull<CR>
 
+" Autocomplete
+set completeopt=longest,menuone
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
