@@ -40,10 +40,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 
 " Search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 "" Syntax
 " Plug 'slim-template/vim-slim'
@@ -116,16 +114,6 @@ let g:jsx_ext_required = 0
 
 " javascript-libraries-syntax.vim
 let g:used_javascript_libs = 'react'
-
-" ctrl-p settings
-" let g:ctrlp_working_path_mode = 'ca'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
- \ 'file': '\.so$\|\.dat$|\.DS_Store$'
- \ }
-
-set runtimepath^=~/.vim/plugged/ctrlp.vim
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -333,8 +321,11 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 let mapleader = ","
 let g:mapleader = ","
 
-" Ack search
-map <leader>a ;Ack!<space>
+" FZF/Ag search
+nmap <leader>t ;Files<CR>
+nmap <leader>a ;Ag<CR>
+nmap <leader>f ;Ag <C-r><C-w><CR>
+nmap <leader>bu ;Buffers<CR>
 
 " Don't use arrows
 noremap <Up> <Nop>
@@ -423,8 +414,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Switch buffers
-" Go to previous bugger
+" Buffers
+" Go to previous buffer
 map <leader>b ;b#<CR>
 " Go to next buffer
 map <leader>bn ;bn<CR>
