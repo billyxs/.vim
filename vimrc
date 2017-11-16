@@ -97,6 +97,7 @@ let g:ale_sign_warning = '--'
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
+let g:ale_pattern_options = {'\.spec.js$': {'ale_enabled': 0}}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
