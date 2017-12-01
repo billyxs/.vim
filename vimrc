@@ -63,11 +63,12 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 "Plug 'flazz/vim-colorschemes'
+Plug 'seesleestak/oceanic-next'
 Plug 'rakr/vim-one'
 Plug 'beigebrucewayne/Turtles'
 Plug 'ayu-theme/ayu-vim'
 Plug 'KeitaNakamura/neodark.vim'
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 Plug 'ajh17/Spacegray.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'nightsense/seabird'
