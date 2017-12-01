@@ -229,6 +229,21 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Underline cursor line
 hi CursorLine gui=underline cterm=underline guibg=NONE guifg=NONE
 
+" netrw
+" SEEMORE - https://shapeshed.com/vim-netrw/#netrw-the-unloved-directory-browser
+" tree view
+let g:netrw_liststyle=3
+" remove banner
+let g:netrw_banner=0
+" directory width
+let g:netrw_winsize = 20
+
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
