@@ -118,6 +118,10 @@ let g:jsx_ext_required = 0
 " javascript-libraries-syntax.vim
 let g:used_javascript_libs = 'react'
 
+" Themes
+" neodark
+let g:neodark#background = '#101010'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
