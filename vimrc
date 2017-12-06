@@ -30,6 +30,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 " GIT,
 "Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -121,6 +122,10 @@ let g:used_javascript_libs = 'react'
 " Themes
 " neodark
 let g:neodark#background = '#101010'
+
+" Markdown
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Google Chrome'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
