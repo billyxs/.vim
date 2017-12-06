@@ -262,7 +262,7 @@ if (has("termguicolors"))
 endif
 
 " Approved Themes
-colorscheme spacegray
+"colorscheme spacegray
 "colorscheme turtles
 "colorscheme vividchalk
 "colorscheme neodark
@@ -273,7 +273,7 @@ colorscheme spacegray
 "colorscheme desert
 "colorscheme gruvbox
 "colorscheme dracula
-"colorscheme one " one dark
+colorscheme one " one dark
 "colorscheme carbonized-dark
 "let g:oceanic_next_terminal_bold = 1
 "let g:oceanic_next_terminal_italic = 1
