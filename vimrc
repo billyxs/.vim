@@ -550,4 +550,4 @@ nmap <leader>u :call GotoJump()<CR>
 
 :finish
 
-more text if I want to
+Vim is fun
