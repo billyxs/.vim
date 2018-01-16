@@ -518,9 +518,9 @@ map <leader>ota m`f{r[f}r]``
 
 nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
 
-" git commands
+" GIT commands
 map <leader>ga ;!git add --all -p<CR>
-map <leader>gp :!git pull<CR>
+map <leader>gp :!git pull --rebase<CR>
 
 " Autocomplete
 set completeopt=longest,menuone
