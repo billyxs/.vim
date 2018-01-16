@@ -63,27 +63,28 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Themes
+Plug 'rainglow/vim'
 "Plug 'flazz/vim-colorschemes'
 Plug 'seesleestak/oceanic-next'
-Plug 'rakr/vim-one'
+Plug 'rakr/vim-one' " colorscheme one
 Plug 'beigebrucewayne/Turtles'
 Plug 'ayu-theme/ayu-vim'
 Plug 'KeitaNakamura/neodark.vim'
-" Plug 'mhartington/oceanic-next'
+"Plug 'mhartington/oceanic-next'
 Plug 'ajh17/Spacegray.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'nightsense/seabird'
 Plug 'dunckr/vim-monokai-soda'
-Plug 'encody/nvim'
-Plug 'hzchirs/vim-material'
-Plug 'baines/vim-colorscheme-thaumaturge'
-Plug 'nightsense/carbonized'
-Plug 'tpope/vim-vividchalk'
+"Plug 'encody/nvim'
+"Plug 'hzchirs/vim-material'
+"Plug 'baines/vim-colorscheme-thaumaturge'
+"Plug 'nightsense/carbonized'
+"Plug 'tpope/vim-vividchalk'
 Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
-Plug 'sjl/badwolf'
-Plug 'dracula/vim'
-Plug 'shawncplus/skittles_berry'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'sjl/badwolf'
+" Plug 'dracula/vim' " rainglow/vim uses the same folder name
+" Plug 'shawncplus/skittles_berry'
 call plug#end()
 
 " NERDTree
@@ -262,7 +263,10 @@ if (has("termguicolors"))
 endif
 
 " Approved Themes
-"colorscheme spacegray
+"colorscheme one " one-dark
+colorscheme spacegray
+"colorscheme juicy
+"colorscheme bold
 "colorscheme turtles
 "colorscheme vividchalk
 "colorscheme neodark
@@ -270,23 +274,12 @@ endif
 "colorscheme petrel
 "colorscheme ayu
 "colorscheme solarized8_dark_flat
-"colorscheme desert
 "colorscheme gruvbox
-"colorscheme dracula
-colorscheme one " one dark
 "colorscheme carbonized-dark
 "let g:oceanic_next_terminal_bold = 1
 "let g:oceanic_next_terminal_italic = 1
 "colorscheme OceanicNext
 
-" Testing themes
-"colorscheme onedark
-"colorscheme marcoloccio
-"colorscheme seattle
-"colorscheme deepsea
-"colorscheme jellybeans
-"colorscheme badwolf
-"colorscheme skittles_berry
 
 set background=dark
 
