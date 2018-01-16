@@ -529,3 +529,25 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" Jumps
+function! GotoJump()
+  jumps
+  let j = input("Please select your jump: ")
+  if j != ''
+    let pattern = '\v\c^\+'
+    if j =~ pattern
+      let j = substitute(j, pattern, '', 'g')
+      execute "normal " . j . "\<c-i>"
+    else
+      execute "normal " . j . "\<c-o>"
+
+    endif
+  endif
+endfunction
+
+nmap <leader>u :call GotoJump()<CR>
+
+:finish
+
+more text if I want to
