@@ -31,6 +31,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'lervag/vimtex'
 
 " GIT,
 "Plug 'Xuyuanp/nerdtree-git-plugin'
