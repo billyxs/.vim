@@ -12,14 +12,23 @@
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
+" LEADER 
+" With a map leader it's possible to do extra key combinations!
+let mapleader = ","
+let g:mapleader = ","
+let maplocalleader = "\\"
+
+
 """"""""""""""""""""""""""""""""""""""""
 "   => General 
 """"""""""""""""""""""""""""""""""""""""
+
 " Line numbers
 set number
 set relativenumber
 set numberwidth=3
 set shiftwidth=2
+
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Mappings
