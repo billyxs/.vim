@@ -7,6 +7,7 @@
 """""""""""""""""""""""""""""""""""""""""
 " Sections:
 "   => General 
+"   => Mappings
 "
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
@@ -19,6 +20,14 @@ set number
 set relativenumber
 set numberwidth=3
 set shiftwidth=2
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Mappings
+""""""""""""""""""""""""""""""""""""""""
+
+"" Insert maps
+" delete line
+inoremap <c-d> <esc>ddi
 
 :finish
 
