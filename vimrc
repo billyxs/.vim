@@ -60,6 +60,11 @@ inoremap <c-g><c-i> <esc>guiw~hi
 nnoremap <leader>"w viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
 
+" Motions
+vnoremap <leader>" `<i"<esc>gv`>i"<esc>
+nnoremap H 0
+noremap L $
+
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Abbreviations 
