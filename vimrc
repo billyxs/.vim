@@ -9,6 +9,7 @@
 "   => Leader 
 "   => General 
 "   => Mappings
+"   => Abbreviations 
 "
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
@@ -53,6 +54,24 @@ inoremap <c-g><c-U> <esc>gUiwi
 inoremap <c-g><c-l> <esc>guiwi
 " capitalize 
 inoremap <c-g><c-i> <esc>guiw~hi
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Abbreviations 
+""""""""""""""""""""""""""""""""""""""""
+
+" Email addresses  
+:iabbrev bg@ billy.montgomery@gmail.com
+:iabbrev bh@ billy.montgomery@hixme.com
+
+" Import modules for javascript
+:iabbrev imp import 
+
+" Export modules and functions for javascript
+:iabbrev expc export const =
+:iabbrev expf export function() {}
+:iabbrev expd export default
+""""""""""""""""""""""""""""""""""""""""
 
 :finish
 
