@@ -28,11 +28,12 @@ let maplocalleader = "\\"
 "   => General 
 """"""""""""""""""""""""""""""""""""""""
 
-" Line numbers
+" Show line numbers
 set number
+" Show line numbers relative to cursor 
 set relativenumber
+" Minimum number of columns for line numbers
 set numberwidth=3
-set shiftwidth=2
 
 
 """"""""""""""""""""""""""""""""""""""""
