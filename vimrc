@@ -62,16 +62,18 @@ inoremap <c-g><c-i> <esc>guiw~hi
 """"""""""""""""""""""""""""""""""""""""
 
 " Email addresses  
-:iabbrev bg@ billy.montgomery@gmail.com
-:iabbrev bh@ billy.montgomery@hixme.com
+iabbrev bg@ billy.montgomery@gmail.com
+iabbrev bh@ billy.montgomery@hixme.com
 
 " Import modules for javascript
-:iabbrev imp import 
+iabbrev im import 
 
 " Export modules and functions for javascript
-:iabbrev expc export const =
-:iabbrev expf export function() {}
-:iabbrev expd export default
+iabbrev exc export const =
+iabbrev exf export function() {}
+iabbrev exd export default
+
+
 """"""""""""""""""""""""""""""""""""""""
 
 :finish
