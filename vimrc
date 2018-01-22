@@ -34,6 +34,11 @@ set shiftwidth=2
 "   => Mappings
 """"""""""""""""""""""""""""""""""""""""
 
+" Open vimrc in split
+noremap <leader>ev :vsplit $MYVIMRC<cr> 
+" Source vimrc
+noremap <leader>sv :source $MYVIMRC<cr> 
+
 "" Insert mode 
 " delete line
 inoremap <c-d> <esc>ddi
