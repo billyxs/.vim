@@ -84,16 +84,26 @@ noremap L $
 iabbrev bg@ billy.montgomery@gmail.com
 iabbrev bh@ billy.montgomery@hixme.com
 
-" Import modules for javascript
-iabbrev im import 
 
-" Export modules and functions for javascript
-iabbrev exc export const =
-iabbrev exf export function() {}
-iabbrev exd export default
 
 
 """"""""""""""""""""""""""""""""""""""""
+"   => Buffers 
+""""""""""""""""""""""""""""""""""""""""
+" Javascript commands
+filetype on
+augroup filetype_javascript
+  autocmd!
+  " Import modules for javascript
+  autocmd Filetype javascript :iabbrev im import
+
+  " Export modules and functions for javascript
+  autocmd Filetype javascript :iabbrev exc export const =
+  autocmd Filetype javascript :iabbrev exf export function() {}
+  autocmd Filetype javascript :iabbrev exd export default
+  autocmd Filetype javascript nnoremap <leader>c I//<esc> 
+augroup END
+
 
 :finish
 
