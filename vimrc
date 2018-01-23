@@ -65,6 +65,7 @@ inoremap <c-g><c-l> <esc>guiwi
 " capitalize 
 inoremap <c-g><c-i> <esc>guiw~hi
 
+
 " Surround word with quotes 
 nnoremap <leader>"w viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
