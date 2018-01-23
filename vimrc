@@ -56,6 +56,8 @@ inoremap <esc> <nop>
 " delete line
 inoremap <c-d> <esc>ddi
 
+
+"" Casing
 " uppercase
 inoremap <c-g><c-U> <esc>gUiwi
 " lowercase 
