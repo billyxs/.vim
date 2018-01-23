@@ -48,7 +48,11 @@ noremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source vimrc
 noremap <leader>sv :source $MYVIMRC<cr> 
 
-"" Insert mode 
+" ESC from insert mode with jk
+inoremap jk <esc>
+" Don't allow <esc> in insert mode
+inoremap <esc> <nop>
+
 " delete line
 inoremap <c-d> <esc>ddi
 
