@@ -105,6 +105,17 @@ augroup filetype_javascript
 augroup END
 
 
+""""""""""""""""""""""""""""""""""""""""
+"   => Status Line 
+""""""""""""""""""""""""""""""""""""""""
+set statusline=%f
+set statusline+=%=
+set statusline+=%l
+set statusline+=/
+set statusline+=%L
+
+""""""""""""""""""""""""""""""""""""""""
+
 :finish
 
 """""""""""""""""""""""""""""""""""""""""
