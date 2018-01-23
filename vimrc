@@ -6,17 +6,19 @@
 """""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""
 " Sections:
-"   => Leader 
+"   => Leaders 
 "   => General 
 "   => Mappings
 "   => Abbreviations 
+"   => Buffers 
+"   => Status Line 
 "
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""""""""""""
-"   => Leader 
+"   => Leaders 
 """"""""""""""""""""""""""""""""""""""""
 " With a map leader it's possible to do extra key combinations!
 let mapleader = ","
