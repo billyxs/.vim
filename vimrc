@@ -42,6 +42,7 @@ set numberwidth=3
 "   => Mappings
 """"""""""""""""""""""""""""""""""""""""
 
+"" Vim file manager
 " Open vimrc in split
 noremap <leader>ev :vsplit $MYVIMRC<cr> 
 " Source vimrc
