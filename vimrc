@@ -12,6 +12,7 @@
 "   => Abbreviations 
 "   => Buffers 
 "   => Status Line 
+"   => Scripts
 "
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
@@ -112,6 +113,18 @@ set statusline+=%=
 set statusline+=%l
 set statusline+=/
 set statusline+=%L
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Scripts
+""""""""""""""""""""""""""""""""""""""""
+let s:counter = 0
+function MyCounter()
+  let s:counter = s:counter + 1
+  echo s:counter
+endfunction
+command Tick call MyCounter()
+
 
 
 """""""""""""""""""""""""""""""""""""""""
