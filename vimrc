@@ -85,8 +85,6 @@ iabbrev bg@ billy.montgomery@gmail.com
 iabbrev bh@ billy.montgomery@hixme.com
 
 
-
-
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers 
 """"""""""""""""""""""""""""""""""""""""
@@ -105,6 +103,7 @@ augroup filetype_javascript
 augroup END
 
 
+
 """"""""""""""""""""""""""""""""""""""""
 "   => Status Line 
 """"""""""""""""""""""""""""""""""""""""
@@ -114,10 +113,9 @@ set statusline+=%l
 set statusline+=/
 set statusline+=%L
 
-""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""
 :finish
 
-"""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""
 Vim built the hard way
+
