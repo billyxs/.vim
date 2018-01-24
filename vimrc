@@ -126,10 +126,26 @@ endfunction
 command Tick call MyCounter()
 
 function! RemoveFile()
+  echo 'buf -' .bufname('#:p')
   let result = confirm("Are you sure?", "&Yes\n&No\n")
   echo result
   if (result ==# 1)
-    echo "delete(expand('%')) | bd! | b#"
+    echom "Deleting " . bufname("%") . "..."
+    let theFile=expand('%:p')
+    echo theFile
+    let dit = delete(theFile)
+    if (dit)
+      echo "Deleted " . theFile
+    else
+      echohl "Failed to delete " . theFile
+    endif 
+
+    echo "it -- " . dit
+    echo "deleted" 
+    execute "bd!"
+    echo "bd it" 
+    execute "e#"
+    echo "b! # it" 
     return 1
   endif
   return 2
