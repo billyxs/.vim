@@ -119,12 +119,22 @@ set statusline+=%L
 "   => Scripts
 """"""""""""""""""""""""""""""""""""""""
 let s:counter = 0
-function MyCounter()
+function! MyCounter()
   let s:counter = s:counter + 1
   echo s:counter
 endfunction
 command Tick call MyCounter()
 
+function! RemoveFile()
+  let result = confirm("Are you sure?", "&Yes\n&No\n")
+  echo result
+  if (result ==# 1)
+    echo "delete(expand('%')) | bd! | b#"
+    return 1
+  endif
+  return 2
+endfunction
+command RFile call RemoveFile()
 
 
 """""""""""""""""""""""""""""""""""""""""
