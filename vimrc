@@ -150,7 +150,7 @@ function! MyCounter()
   let s:counter = s:counter + 1
   echo s:counter
 endfunction
-command Tick call MyCounter()
+command! Tick call MyCounter()
 
 function! RemoveFile()
   echo 'buf -' .bufname('#:p')
@@ -177,7 +177,7 @@ function! RemoveFile()
   endif
   return 2
 endfunction
-command RFile call RemoveFile()
+command! RFile call RemoveFile()
 
 
 """""""""""""""""""""""""""""""""""""""""
