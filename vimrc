@@ -77,14 +77,18 @@ noremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source vimrc
 noremap <leader>sv :source $MYVIMRC<cr> 
 
-" ESC from insert mode with jk
-inoremap jk <esc>
-" Don't allow <esc> in insert mode
+" Don't allow <esc> in insert mode, use jk 
 inoremap <esc> <nop>
 
 " delete line
 inoremap <c-d> <esc>ddi
 
+" Save 
+nnoremap <c-s> :update!<cr>
+inoremap <c-s> <esc>:update!<cr>
+
+" ESC from insert mode with jk
+inoremap jk <esc>:update!<cr>
 
 "" Casing
 " uppercase
