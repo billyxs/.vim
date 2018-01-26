@@ -7,6 +7,7 @@
 """""""""""""""""""""""""""""""""""""""""
 " Sections:
 "   => Leaders 
+"   => Plugins
 "   => General 
 "   => Mappings
 "   => Abbreviations 
@@ -25,6 +26,31 @@
 let mapleader = ","
 let g:mapleader = ","
 let maplocalleader = "\\"
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Plugins 
+""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+" Time tracking
+Plug 'wakatime/vim-wakatime'
+
+" File system
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" GIT,
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" Linting
+Plug 'w0rp/ale'
+
+" Search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
 
 
 """"""""""""""""""""""""""""""""""""""""
