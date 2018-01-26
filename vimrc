@@ -62,9 +62,10 @@ set number
 " Show line numbers relative to cursor 
 set relativenumber
 " Minimum number of columns for line numbers
-set numberwidth=3
+set numberwidth=2
 
-colorscheme desert 
+colorscheme elflord 
+
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Mappings
