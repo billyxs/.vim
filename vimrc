@@ -64,6 +64,7 @@ set relativenumber
 " Minimum number of columns for line numbers
 set numberwidth=3
 
+colorscheme desert 
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Mappings
