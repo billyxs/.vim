@@ -82,12 +82,72 @@ set timeoutlen=20
 
 " Show line numbers
 set number
+
 " Show line numbers relative to cursor 
 set relativenumber
+
 " Minimum number of columns for line numbers
 set numberwidth=2
 
-colorscheme elflord 
+
+"""""""""""""""""""""""""""""""""""""""""
+"   => Colors and Fonts 
+"""""""""""""""""""""""""""""""""""""""""
+
+" Enable syntax highlighting / better than syntax on
+if !exists(g:syntax_on)|syntax enable|endif
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Approved Themes
+"colorscheme one " one-dark
+"colorscheme spacegray
+"colorscheme juicy
+"colorscheme bold
+"colorscheme turtles
+"colorscheme vividchalk
+"colorscheme neodark
+colorscheme hydrangea
+"colorscheme petrel
+"colorscheme ayu
+"colorscheme solarized8_dark_flat
+"colorscheme gruvbox
+"colorscheme carbonized-dark
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"colorscheme OceanicNext
+
+
+set background=dark
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" autocmd BufNewFile,BufRead *.json set ft=javascript
+" autocmd BufNewFile,BufRead *.js set ft=javascript
+autocmd BufNewFile,BufReadPost *.md set filetype=mkd
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in git et.c anyway...
+set nobackup
+set nowb
+set noswapfile " No swap file
 
 
 """"""""""""""""""""""""""""""""""""""""
