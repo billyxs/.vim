@@ -57,6 +57,29 @@ call plug#end()
 "   => General 
 """"""""""""""""""""""""""""""""""""""""
 
+" Sets how many lines of history VIM has to remember
+set history=10000
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" copy to clipboard
+set clipboard=unnamed
+map <F10> :set pastetoggle<CR>
+
+" Allow mouse scrolling
+set mouse=n
+
+" Search down into folders
+set path+=**
+
+" Set keystroke timeout
+set timeoutlen=20
+
 " Show line numbers
 set number
 " Show line numbers relative to cursor 
