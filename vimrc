@@ -157,12 +157,11 @@ inoremap <c-d> <esc>ddi
 
 "" Casing
 " uppercase
-inoremap <c-g><c-u> <esc>guiw
+nnoremap <space>u gUiw
 " lowercase 
-inoremap <c-g><c-l> <esc>guiw
+nnoremap <space>l guiw
 " capitalize 
-inoremap <c-g><c-i> <esc>guiw~h
-
+nnoremap <space>i guiw~h
 
 " Surround word with quotes 
 nnoremap <leader>"w viw<esc>a"<esc>bi"<esc>lel
