@@ -363,6 +363,7 @@ inoremap <leader><leader>s <ESC><leader>s
 
 " Esc with jk
 inoremap jk <ESC>
+nnoremap zz ZZ
 
 " Remap VIM 0 to first non-blank character
 " map 0 ^
