@@ -153,8 +153,7 @@ set mouse=n
 set path+=**
 
 " Set keystroke timeout
-set timeoutlen=100
-set ttimeoutlen=0
+set timeoutlen=20
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files, backups and undo
