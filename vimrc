@@ -123,17 +123,145 @@ let vim_markdown_preview_browser='Google Chrome'
 
 " Show line numbers
 set number
+
 " Show line numbers relative to cursor 
 set relativenumber
+
 " Minimum number of columns for line numbers
 set numberwidth=3
+
+"Always show current position
+set ruler
+
+" Set 5 lines to the cursor - when moving vertically using j/k
+set so=5
+
+" Turn on the WiLd menu
+set wildmenu
+
+" Height of the command bar
+set cmdheight=2
+
+" A buffer becomes hidden when it is abandoned
+set hid
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+" For regular expressions turn magic on
+set magic
+
+" Show matching brackets when text indicator is over them
+set showmatch
+
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" Ignore files
+set wildignore+=*/lib,*/.git,*/coverage,*/node_modules,*/tmp/*,*.so,*.swp,*.zip
+
+" Don't auto indent
+set noai
+
+
+" highlight lines that cross 80 characters
+highlight ColorColumn ctermbg=cyan guibg=cyan guifg=black
+call matchadd('ColorColumn', '\%81v', 100)
+
+" Underline cursor line
+hi CursorLine gui=underline cterm=underline guibg=NONE guifg=NONE
+
+" netrw
+" SEEMORE - https://shapeshed.com/vim-netrw/#netrw-the-unloved-directory-browser
+" tree view
+let g:netrw_liststyle=3
+" remove banner
+let g:netrw_banner=0
+" directory width
+let g:netrw_winsize = 20
+
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
+
 
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""
+
+" Enable syntax highlighting / better than syntax on
+if !exists(g:syntax_on)|syntax enable|endif
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" autocmd BufNewFile,BufRead *.json set ft=javascript
+" autocmd BufNewFile,BufRead *.js set ft=javascript
+autocmd BufNewFile,BufReadPost *.md set filetype=mkd
+
+" Colorscheme - Now playing
 colorscheme hydrangea
 
+" Approved Themes
+"colorscheme hydrangea
+"colorscheme spacegray
+"colorscheme one " one-dark
+"colorscheme juicy
+"colorscheme bold
+"colorscheme turtles
+"colorscheme vividchalk
+"colorscheme neodark
+"colorscheme petrel
+"colorscheme ayu
+"colorscheme solarized8_dark_flat
+"colorscheme gruvbox
+"colorscheme carbonized-dark
+"colorscheme OceanicNext
+
+" Colorscheme extras
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 
 
 """"""""""""""""""""""""""""""""""""""""
