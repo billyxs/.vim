@@ -417,7 +417,7 @@ nnoremap <leader>bp ;bp<CR>
 "nnoremap gb :Buffer<CR>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+nnoremap <leader>ba :%bd!<cr>
 
 " Useful mappings for managing tabs
 " map <leader>tn :tabnew<cr>
