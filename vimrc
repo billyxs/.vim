@@ -264,13 +264,13 @@ endif
 
 " Approved Themes
 "colorscheme one " one-dark
-colorscheme spacegray
+"colorscheme spacegray
 "colorscheme juicy
 "colorscheme bold
 "colorscheme turtles
 "colorscheme vividchalk
 "colorscheme neodark
-"colorscheme hydrangea
+colorscheme hydrangea
 "colorscheme petrel
 "colorscheme ayu
 "colorscheme solarized8_dark_flat
