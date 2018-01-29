@@ -7,7 +7,6 @@
 """""""""""""""""""""""""""""""""""""""""
 " Sections:
 "   => Leaders 
-"   => Plugins
 "   => General 
 "   => Mappings
 "   => Abbreviations 
@@ -29,125 +28,15 @@ let maplocalleader = "\\"
 
 
 """"""""""""""""""""""""""""""""""""""""
-"   => Plugins 
-""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
-" Time tracking
-Plug 'wakatime/vim-wakatime'
-
-" File system
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
-" GIT,
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" Linting
-Plug 'w0rp/ale'
-
-" Search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-call plug#end()
-
-
-""""""""""""""""""""""""""""""""""""""""
 "   => General 
 """"""""""""""""""""""""""""""""""""""""
 
-" Sets how many lines of history VIM has to remember
-set history=10000
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" copy to clipboard
-set clipboard=unnamed
-map <F10> :set pastetoggle<CR>
-
-" Allow mouse scrolling
-set mouse=n
-
-" Search down into folders
-set path+=**
-
-" Set keystroke timeout
-set timeoutlen=20
-
 " Show line numbers
 set number
-
 " Show line numbers relative to cursor 
 set relativenumber
-
 " Minimum number of columns for line numbers
-set numberwidth=2
-
-
-"""""""""""""""""""""""""""""""""""""""""
-"   => Colors and Fonts 
-"""""""""""""""""""""""""""""""""""""""""
-
-" Enable syntax highlighting / better than syntax on
-if !exists(g:syntax_on)|syntax enable|endif
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" Approved Themes
-"colorscheme one " one-dark
-"colorscheme spacegray
-"colorscheme juicy
-"colorscheme bold
-"colorscheme turtles
-"colorscheme vividchalk
-"colorscheme neodark
-colorscheme hydrangea
-"colorscheme petrel
-"colorscheme ayu
-"colorscheme solarized8_dark_flat
-"colorscheme gruvbox
-"colorscheme carbonized-dark
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"colorscheme OceanicNext
-
-
-set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" autocmd BufNewFile,BufRead *.json set ft=javascript
-" autocmd BufNewFile,BufRead *.js set ft=javascript
-autocmd BufNewFile,BufReadPost *.md set filetype=mkd
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in git et.c anyway...
-set nobackup
-set nowb
-set noswapfile " No swap file
+set numberwidth=3
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -160,26 +49,22 @@ noremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source vimrc
 noremap <leader>sv :source $MYVIMRC<cr> 
 
-" Don't allow <esc> in insert mode, use jk 
+" ESC from insert mode with jk
+inoremap jk <esc>
+" Don't allow <esc> in insert mode
 inoremap <esc> <nop>
 
 " delete line
 inoremap <c-d> <esc>ddi
 
-" Save 
-nnoremap <c-s> :update!<cr>
-inoremap <c-s> <esc>:update!<cr>
-
-" ESC from insert mode with jk
-inoremap jk <esc>:update!<cr>
 
 "" Casing
 " uppercase
-inoremap <c-g><c-U> <esc>gUiwi
+inoremap <c-g><c-u> <esc>guiw
 " lowercase 
-inoremap <c-g><c-l> <esc>guiwi
+inoremap <c-g><c-l> <esc>guiw
 " capitalize 
-inoremap <c-g><c-i> <esc>guiw~hi
+inoremap <c-g><c-i> <esc>guiw~h
 
 
 " Surround word with quotes 
@@ -187,7 +72,6 @@ nnoremap <leader>"w viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
 
 " Motions
-vnoremap <leader>" `<i"<esc>gv`>i"<esc>
 nnoremap H 0
 noremap L $
 
@@ -230,6 +114,7 @@ set statusline+=/
 set statusline+=%L
 
 
+
 """"""""""""""""""""""""""""""""""""""""
 "   => Scripts
 """"""""""""""""""""""""""""""""""""""""
@@ -266,6 +151,7 @@ function! RemoveFile()
   return 2
 endfunction
 command! RFile call RemoveFile()
+
 
 
 """""""""""""""""""""""""""""""""""""""""
