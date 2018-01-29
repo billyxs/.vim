@@ -343,7 +343,7 @@ let g:mapleader = ","
 
 " FZF/Ag search
 nmap <leader>t ;Files<CR>
-nmap <leader>a ;Ag<CR>
+nmap <leader>a ;Ag<space><CR>
 nmap <leader>f ;Ag <C-r><C-w><CR>
 nmap <leader>bu ;Buffers<CR>
 
