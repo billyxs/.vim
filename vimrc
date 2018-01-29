@@ -7,6 +7,7 @@
 """""""""""""""""""""""""""""""""""""""""
 " Sections:
 "   => Leaders 
+"   => Plugins
 "   => General 
 "   => Mappings
 "   => Abbreviations 
@@ -25,6 +26,94 @@
 let mapleader = ","
 let g:mapleader = ","
 let maplocalleader = "\\"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"   => Plugins
+"      vim-plug :PlugInstall, :PlugUpdate
+"""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+" Time tracking
+Plug 'wakatime/vim-wakatime'
+
+" File system
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" Text, Editing
+Plug 'scrooloose/nerdcommenter'
+Plug 'JamshedVesuna/vim-markdown-preview'
+
+" GIT,
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" Linting
+Plug 'w0rp/ale'
+
+" Search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+"" Syntax
+Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
+
+" Themes
+Plug 'rainglow/vim'
+"Plug 'flazz/vim-colorschemes'
+Plug 'seesleestak/oceanic-next'
+Plug 'rakr/vim-one' " colorscheme one
+Plug 'beigebrucewayne/Turtles'
+Plug 'ayu-theme/ayu-vim'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'ajh17/Spacegray.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'nightsense/seabird'
+Plug 'dunckr/vim-monokai-soda'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+" NERDTree
+map <F2> ;NERDTreeToggle<CR>
+nmap <leader>n ;NERDTreeToggle<CR>
+
+" ALE plugin
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
+" :ALEFix will try and fix your JS code with ESLint.
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_pattern_options = {'\.spec.js$': {'ale_enabled': 0}}
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+let g:ale_fix_on_save = 1
+
+" Airline
+let g:airline#extensions#ale#enabled = 1
+let g:airline_powerline_fonts = 1
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" vim-jsx - don't require .jsx extension
+let g:jsx_ext_required = 0
+
+" javascript-libraries-syntax.vim
+let g:used_javascript_libs = 'react'
+
+" Themes
+" neodark
+let g:neodark#background = '#101010'
+
+" Markdown
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Google Chrome'
 
 
 """"""""""""""""""""""""""""""""""""""""
