@@ -90,7 +90,7 @@ call plug#end()
 
 " NERDTree
 map <F2> ;NERDTreeToggle<CR>
-nmap <leader>n ;NERDTreeFind<CR>
+nmap <leader>n ;NERDTreeToggle<CR>
 
 " ALE plugin
 let g:ale_completion_enabled = 1
