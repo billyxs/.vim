@@ -9,6 +9,7 @@
 "   => Leaders 
 "   => Plugins
 "   => General 
+"   => Colors and Fonts
 "   => Mappings
 "   => Abbreviations 
 "   => Buffers 
@@ -126,6 +127,13 @@ set number
 set relativenumber
 " Minimum number of columns for line numbers
 set numberwidth=3
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Colors and Fonts
+""""""""""""""""""""""""""""""""""""""""
+colorscheme hydrangea
+
 
 
 """"""""""""""""""""""""""""""""""""""""
