@@ -41,8 +41,8 @@ Plug 'wakatime/vim-wakatime'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Text, Editing
-Plug 'scrooloose/nerdcommenter'
-Plug 'JamshedVesuna/vim-markdown-preview'
+" Plug 'scrooloose/nerdcommenter'
+" Plug 'JamshedVesuna/vim-markdown-preview'
 
 " GIT,
 Plug 'airblade/vim-gitgutter'
@@ -56,23 +56,23 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 "" Syntax
-Plug 'mxw/vim-jsx'
-Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
+"Plug 'mxw/vim-jsx'
+"Plug 'othree/yajs.vim'
+"Plug 'othree/es.next.syntax.vim'
 
 " Themes
-Plug 'rainglow/vim'
-"Plug 'flazz/vim-colorschemes'
-Plug 'seesleestak/oceanic-next'
-Plug 'rakr/vim-one' " colorscheme one
 Plug 'beigebrucewayne/Turtles'
-Plug 'ayu-theme/ayu-vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'ajh17/Spacegray.vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'nightsense/seabird'
-Plug 'dunckr/vim-monokai-soda'
-Plug 'morhetz/gruvbox'
+"Plug 'rainglow/vim'
+"Plug 'flazz/vim-colorschemes'
+"Plug 'seesleestak/oceanic-next'
+"Plug 'rakr/vim-one' " colorscheme one
+"Plug 'ayu-theme/ayu-vim'
+"Plug 'lifepillar/vim-solarized8'
+"Plug 'nightsense/seabird'
+"Plug 'dunckr/vim-monokai-soda'
+"Plug 'morhetz/gruvbox'
 call plug#end()
 
 " NERDTree
