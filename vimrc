@@ -377,43 +377,13 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 
-" Home Num Keys
-nnoremap <C-I> :call VimLock(1)<CR>i
-function! VimLock(enable)
-  if a:enable
-    inoremap m 1
-    inoremap , 2
-    inoremap . 3
-    inoremap j 4
-    inoremap k 5
-    inoremap l 6
-    inoremap u 7
-    inoremap i 8
-    inoremap o 9
-    inoremap @ 0
-    inoremap <Esc> <Esc>:call VimLock(0)<CR>
-  else
-    iunmap m
-    iunmap ,
-    iunmap .
-    iunmap j
-    iunmap k
-    iunmap l
-    iunmap u
-    iunmap i
-    iunmap o
-    iunmap @
-    iunmap <Esc>
-  endif
-endfunction
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+nnoremap j gj
+nnoremap k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 " map <space> /
@@ -439,9 +409,12 @@ map <C-l> <C-w>l
 " Go to previous buffer
 map <leader>b ;b#<CR>
 " Go to next buffer
-map <leader>bn ;bn<CR>
+nnoremap <leader>bn ;bn<CR>
 " Go to previous buffer
-map <leader>bp ;bp<CR>
+nnoremap <leader>bp ;bp<CR>
+" go to buffer
+"nnoremap gb :ls<CR>:buffer<Space>
+"nnoremap gb :Buffer<CR>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
@@ -489,20 +462,20 @@ nnoremap <leader>log :call EasyConsoleLog()<CR>
 
 
 " Describe block
-map <leader>des odescribe(''<ESC>mma, function() {<CR><CR>})<ESC>`mi
+nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
 
 " It block
-map <leader>it oit(''<ESC>mma, function() {<CR><CR>})<ESC>`mi
+nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
 
 " Expect equal test
-map <leader>ee oexpect().to.equal()<ESC>^f)i
+nnoremap <leader>ee oexpect().to.equal()<ESC>^f)i
 
 " Expect statement - jump to set test value
-map <leader>eev ^2f)i''<C-o>h
-map <leader>een ^2f)i
-map <leader>eeu ^2f)iundefined<ESC>
-map <leader>eet ^2f)itrue<ESC>
-map <leader>eef ^2f)ifalse<ESC>
+nnoremap <leader>eev ^2f)i''<C-o>h
+nnoremap <leader>een ^2f)i
+nnoremap <leader>eeu ^2f)iundefined<ESC>
+nnoremap <leader>eet ^2f)itrue<ESC>
+nnoremap <leader>eef ^2f)ifalse<ESC>
 
 " Import statements
 nnoremap <leader>imp iimport  from ''<ESC>2Bhi
@@ -519,8 +492,12 @@ map <leader>ota m`f{r[f}r]``
 nnoremap <leader>comp :read ~/.vim/templates/react-component.js<CR>
 
 " GIT commands
+" git add
 map <leader>ga ;!git add --all -p<CR>
+" git pull latest
 map <leader>gp :!git pull --rebase<CR>
+" git status
+map <leader>gs ;GFiles?<CR>
 
 " Autocomplete
 set completeopt=longest,menuone
@@ -547,6 +524,119 @@ function! GotoJump()
 endfunction
 
 nmap <leader>u :call GotoJump()<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Mappings
+""""""""""""""""""""""""""""""""""""""""
+
+"" Vim file manager
+" Open vimrc in split
+noremap <leader>ev :vsplit $MYVIMRC<cr>
+" Source vimrc
+noremap <leader>sv :source $MYVIMRC<cr>
+
+" Don't allow <esc> in insert mode
+inoremap <esc> <nop>
+
+" delete line
+inoremap <c-d> <esc>ddi
+
+"" Casing
+" uppercase
+inoremap <c-g><c-U> <esc>gUiwi
+" lowercase
+inoremap <c-g><c-l> <esc>guiwi
+" capitalize
+inoremap <c-g><c-i> <esc>guiw~hi
+
+" Surround word with quotes
+nnoremap <leader>"w viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
+" Surround selection with quotes
+vnoremap ` o<esc>i"<esc>gvo<esc>a`<esc>
+vnoremap ' o<esc>i"<esc>gvo<esc>a'<esc>
+vnoremap " o<esc>i"<esc>gvo<esc>a"<esc>
+vnoremap ( o<esc>i(<esc>gvo<esc>a)<esc>
+vnoremap { o<esc>i{<esc>gvo<esc>a}<esc>
+
+" Motions
+vnoremap <leader>" `<i"<esc>gv`>i"<esc>
+nnoremap H 0
+noremap L $
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Abbreviations
+""""""""""""""""""""""""""""""""""""""""
+
+" Email addresses
+iabbrev bg@ billy.montgomery@gmail.com
+iabbrev bh@ billy.montgomery@hixme.com
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Buffers
+""""""""""""""""""""""""""""""""""""""""
+" Javascript commands
+filetype on
+augroup filetype_javascript
+  autocmd!
+  " Import modules for javascript
+  autocmd Filetype javascript :iabbrev im import
+
+  " Export modules and functions for javascript
+  autocmd Filetype javascript :iabbrev exc export const =
+  autocmd Filetype javascript :iabbrev exf export function() {}
+  autocmd Filetype javascript :iabbrev exd export default
+  autocmd Filetype javascript :iabbrev fu function () {}
+  autocmd Filetype javascript :iabbrev () () => {}
+  autocmd Filetype javascript nnoremap <leader>c I//<esc>
+
+  " reduce function
+  autocmd Filetype javascript :iabbrev red reduce((memo, item) => {<cr>
+      \<cr>
+      \return memo<cr>
+      \}, {})
+
+  " map function
+  autocmd Filetype javascript :iabbrev map map((item) => {<cr>
+      \})
+
+  " for function
+  autocmd Filetype javascript :iabbrev for forEach((item) => {<cr>
+      \})
+augroup END
+
+
+" Remove File
+function! RemoveFile()
+  echo 'buf -' .bufname('#:p')
+  let result = confirm("Are you sure?", "&Yes\n&No\n")
+  echo result
+  if (result ==# 1)
+    echom "Deleting " . bufname("%") . "..."
+    let theFile=expand('%:p')
+    echo theFile
+    let dit = delete(theFile)
+    if (dit)
+      echo "Deleted " . theFile
+    else
+      echohl "Failed to delete " . theFile
+    endif
+
+    echo "it -- " . dit
+    echo "deleted"
+    execute "bd!"
+    echo "bd it"
+    execute "e#"
+    echo "b! # it"
+    return 1
+  endif
+  return 2
+endfunction
+command! RFile call RemoveFile()
+
 
 :finish
 
