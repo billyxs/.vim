@@ -187,8 +187,9 @@ iabbrev bh@ billy.montgomery@hixme.com
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers 
 """"""""""""""""""""""""""""""""""""""""
-" Javascript commands
 filetype on
+
+" Javascript
 augroup filetype_javascript
   autocmd!
   " Import modules for javascript
@@ -199,6 +200,13 @@ augroup filetype_javascript
   autocmd Filetype javascript :iabbrev exf export function() {}
   autocmd Filetype javascript :iabbrev exd export default
   autocmd Filetype javascript nnoremap <leader>c I//<esc> 
+  autocmd BufWrite *.js :call DeleteTrailingWS()
+augroup END
+
+" Python 
+augroup filetype_python
+  autocmd!
+  autocmd BufWrite *.py :call DeleteTrailingWS()
 augroup END
 
 
@@ -217,6 +225,26 @@ set statusline+=%L
 """"""""""""""""""""""""""""""""""""""""
 "   => Scripts
 """"""""""""""""""""""""""""""""""""""""
+
+" Javascript
+" Easy console log
+function! EasyConsoleLog()
+  let word = expand("<cword>")
+  execute "normal! oconsole.log('".word." = ', ".word.")"
+endfunction
+
+nnoremap <leader>log :call EasyConsoleLog()<CR>
+
+
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+
+" Rebuild tests
 let s:counter = 0
 function! MyCounter()
   let s:counter = s:counter + 1
