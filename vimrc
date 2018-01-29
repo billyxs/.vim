@@ -45,8 +45,8 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'JamshedVesuna/vim-markdown-preview'
 
 " GIT,
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+"Plug 'airblade/vim-gitgutter'
+"Plug 'tpope/vim-fugitive'
 
 " Linting
 Plug 'w0rp/ale'
