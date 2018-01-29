@@ -172,6 +172,8 @@ nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
 nnoremap H 0
 noremap L $
 
+" Save and quit with zz
+nnoremap zz ZZ
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Abbreviations 
