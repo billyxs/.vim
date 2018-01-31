@@ -121,6 +121,26 @@ let vim_markdown_preview_browser='Google Chrome'
 "   => General
 """"""""""""""""""""""""""""""""""""""""
 
+" Sets how many lines of history VIM has to remember
+set history=10000
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" copy to clipboard
+set clipboard=unnamed
+map <F10> :set pastetoggle<CR>
+
+" Allow mouse scrolling
+set mouse=n
+
+" Search down into folders
+set path+=**
+
 " Show line numbers
 set number
 
@@ -185,6 +205,19 @@ set wildignore+=*/lib,*/.git,*/coverage,*/node_modules,*/tmp/*,*.so,*.swp,*.zip
 " Don't auto indent
 set noai
 
+" tabs
+set smarttab
+" Use tabs instead of spaces
+set expandtab
+" 1 tab == 2 spaces
+set tabstop=2
+set shiftwidth=2
+
+" tabs to spaces
+retab
+
+" remove trailing spaces on :w
+autocmd BufWritePre * %s/\s\+$//e
 
 " highlight lines that cross 80 characters
 highlight ColorColumn ctermbg=cyan guibg=cyan guifg=black
@@ -209,7 +242,7 @@ let g:netrw_winsize = 20
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
-
+autocmd BufWritePre * %s/\s\+$//e
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Colors and Fonts
@@ -297,55 +330,43 @@ nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
 
 " Motions
 nnoremap H 0
-noremap L $
+onoremap H 0
+nnoremap L $
+onoremap L $
+
+" save file
+nnoremap <leader><leader>s :update!<cr>
+inoremap <leader><leader>s <esc>:update!<cr>
 
 " Save and quit with zz
 nnoremap zz ZZ
 
+" Go to last buffer
+nnoremap <leader>bb :b#<cr>
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bp :bp<cr>
+nnoremap gb :ls<cr>:buffer<space>
+
+" Go to windows with hjkl
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+" Snippet like mappings
+" Describe block
+nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+
+" It block
+nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+
 """"""""""""""""""""""""""""""""""""""""
-"   => Abbreviations 
+"   => Abbreviations
 """"""""""""""""""""""""""""""""""""""""
 
-" Email addresses  
+" Email addresses
 iabbrev bg@ billy.montgomery@gmail.com
 iabbrev bh@ billy.montgomery@hixme.com
-
-
-""""""""""""""""""""""""""""""""""""""""
-"   => Buffers 
-""""""""""""""""""""""""""""""""""""""""
-filetype on
-
-" Javascript
-augroup filetype_javascript
-  autocmd!
-  " Import modules for javascript
-  autocmd Filetype javascript :iabbrev im import
-
-  " Export modules and functions for javascript
-  autocmd Filetype javascript :iabbrev exc export const =
-  autocmd Filetype javascript :iabbrev exf export function() {}
-  autocmd Filetype javascript :iabbrev exd export default
-  autocmd Filetype javascript nnoremap <leader>c I//<esc> 
-  autocmd BufWrite *.js :call DeleteTrailingWS()
-augroup END
-
-" Python 
-augroup filetype_python
-  autocmd!
-  autocmd BufWrite *.py :call DeleteTrailingWS()
-augroup END
-
-
-
-""""""""""""""""""""""""""""""""""""""""
-"   => Status Line 
-""""""""""""""""""""""""""""""""""""""""
-set statusline=%f
-set statusline+=%=
-set statusline+=%l
-set statusline+=/
-set statusline+=%L
 
 
 
@@ -364,11 +385,11 @@ nnoremap <leader>log :call EasyConsoleLog()<CR>
 
 
 " Delete trailing white space on save
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
+"func! DeleteTrailingWS()
+"  exe "normal mz"
+"  %s/\s\+$//ge
+"  exe "normal `z"
+"endfunc
 
 
 " Rebuild tests
@@ -382,29 +403,59 @@ command! Tick call MyCounter()
 function! RemoveFile()
   echo 'buf -' .bufname('#:p')
   let result = confirm("Are you sure?", "&Yes\n&No\n")
-  echo result
   if (result ==# 1)
     echom "Deleting " . bufname("%") . "..."
-    let theFile=expand('%:p')
-    echo theFile
+    let theFile = expand('%:p')
     let dit = delete(theFile)
     if (dit)
       echo "Deleted " . theFile
     else
       echohl "Failed to delete " . theFile
-    endif 
+    endif
 
-    echo "it -- " . dit
-    echo "deleted" 
-    execute "bd!"
-    echo "bd it" 
     execute "e#"
-    echo "b! # it" 
     return 1
   endif
   return 2
 endfunction
 command! RFile call RemoveFile()
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => buffers
+""""""""""""""""""""""""""""""""""""""""
+
+" Javascript
+augroup filetype_javascript
+  autocmd!
+  " Import modules for javascript
+  autocmd Filetype javascript :iabbrev im import
+
+  " Export modules and functions for javascript
+  autocmd Filetype javascript :iabbrev exc export const =
+  autocmd Filetype javascript :iabbrev exf export function() {}
+  autocmd Filetype javascript :iabbrev exd export default
+  autocmd Filetype javascript nnoremap <leader>c I//<esc>
+"  autocmd BufWrite *.js :call DeleteTrailingWS()
+augroup END
+
+" Python
+"augroup filetype_python
+"  autocmd!
+"  autocmd BufWrite *.py :call DeleteTrailingWS()
+"augroup END
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+"   => Status Line
+""""""""""""""""""""""""""""""""""""""""
+set statusline=%f
+set statusline+=%=
+set statusline+=%l
+set statusline+=/
+set statusline+=%L
 
 
 
