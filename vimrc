@@ -6,22 +6,22 @@
 """""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""
 " Sections:
-"   => Leaders 
+"   => Leaders
 "   => Plugins
-"   => General 
+"   => General
 "   => Colors and Fonts
 "   => Mappings
-"   => Abbreviations 
-"   => Buffers 
-"   => Status Line 
+"   => Abbreviations
 "   => Scripts
+"   => Buffers
+"   => Status Line
 "
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""""""""""""
-"   => Leaders 
+"   => Leaders
 """"""""""""""""""""""""""""""""""""""""
 " With a map leader it's possible to do extra key combinations!
 let mapleader = ","
@@ -118,13 +118,13 @@ let vim_markdown_preview_browser='Google Chrome'
 
 
 """"""""""""""""""""""""""""""""""""""""
-"   => General 
+"   => General
 """"""""""""""""""""""""""""""""""""""""
 
 " Show line numbers
 set number
 
-" Show line numbers relative to cursor 
+" Show line numbers relative to cursor
 set relativenumber
 
 " Minimum number of columns for line numbers
@@ -270,9 +270,9 @@ let g:oceanic_next_terminal_italic = 1
 
 "" Vim file manager
 " Open vimrc in split
-noremap <leader>ev :vsplit $MYVIMRC<cr> 
+noremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source vimrc
-noremap <leader>sv :source $MYVIMRC<cr> 
+noremap <leader>sv :source $MYVIMRC<cr>
 
 " ESC from insert mode with jk
 inoremap jk <esc>
@@ -286,12 +286,12 @@ inoremap <c-d> <esc>ddi
 "" Casing
 " uppercase
 nnoremap <space>u gUiw
-" lowercase 
+" lowercase
 nnoremap <space>l guiw
-" capitalize 
+" capitalize
 nnoremap <space>i guiw~h
 
-" Surround word with quotes 
+" Surround word with quotes
 nnoremap <leader>"w viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
 
