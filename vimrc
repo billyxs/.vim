@@ -9,6 +9,7 @@
 "   => Leaders
 "   => Plugins
 "   => General
+"   => Files, backups and undo
 "   => Colors and Fonts
 "   => Mappings
 "   => Abbreviations
@@ -244,6 +245,16 @@ let g:netrw_winsize = 20
 
 autocmd BufWritePre * %s/\s\+$//e
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in git et.c anyway...
+set nobackup
+set nowb
+set noswapfile " No swap file
+
+
+
 """"""""""""""""""""""""""""""""""""""""
 "   => Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""
@@ -359,6 +370,43 @@ nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
 
 " It block
 nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+
+" Treat long lines as break lines (useful when moving around in them)
+nnoremap j gj
+nnoremap k gk
+
+" Create a newline from where the cursor is
+nmap <leader>j i<CR><ESC>
+
+nnoremap <leader>o o<ESC>
+nnoremap <leader>O O<ESC>
+
+" Smart way to move between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Switch CWD to the directory of the open buffer
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Specify the behavior when switching between buffers
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Remember info about open buffers on close
+set viminfo^=%
+
+
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Abbreviations
