@@ -415,10 +415,10 @@ nnoremap j gj
 nnoremap k gk
 
 " Create a newline from where the cursor is
-nmap <leader>j i<CR><ESC>
+nnoremap <leader>j i<CR><ESC>
 
-nnoremap <leader>o o<ESC>
-nnoremap <leader>O O<ESC>
+nnoremap <space>o o<ESC>
+nnoremap <space>O O<ESC>
 
 " Smart way to move between windows
 nnoremap <C-h> <C-w>h
@@ -454,7 +454,6 @@ set viminfo^=%
 " Email addresses
 iabbrev bg@ billy.montgomery@gmail.com
 iabbrev bh@ billy.montgomery@hixme.com
-
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -525,6 +524,12 @@ augroup filetype_javascript
   autocmd Filetype javascript :iabbrev exd export default
   autocmd Filetype javascript nnoremap <leader>c I//<esc>
 "  autocmd BufWrite *.js :call DeleteTrailingWS()
+augroup END
+
+augroup filetype_markdown
+  autocmd!
+
+  autocmd Filetype md :inoremap +link +<space>[](jkpi)<esc>
 augroup END
 
 " Python
