@@ -38,16 +38,16 @@ call plug#begin('~/.vim/plugged')
 " Time tracking
 Plug 'wakatime/vim-wakatime'
 
-" File system
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Startup time details
+Plug 'tweekmonster/startuptime.vim'
 
 " Text, Editing
 " Plug 'scrooloose/nerdcommenter'
 " Plug 'JamshedVesuna/vim-markdown-preview'
 
 " GIT,
-"Plug 'airblade/vim-gitgutter'
-"Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Linting
 Plug 'w0rp/ale'
