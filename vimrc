@@ -59,16 +59,17 @@ Plug 'junegunn/fzf.vim'
 "" Syntax
 "Plug 'mxw/vim-jsx'
 "Plug 'othree/yajs.vim'
-"Plug 'othree/es.next.syntax.vim'
+Plug 'othree/es.next.syntax.vim'
 
 " Themes
+Plug 'arcticicestudio/nord-vim'
 Plug 'beigebrucewayne/Turtles'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'ajh17/Spacegray.vim'
-"Plug 'rainglow/vim'
+Plug 'rainglow/vim'
+Plug 'seesleestak/oceanic-next'
+Plug 'rakr/vim-one' " colorscheme one
 "Plug 'flazz/vim-colorschemes'
-"Plug 'seesleestak/oceanic-next'
-"Plug 'rakr/vim-one' " colorscheme one
 "Plug 'ayu-theme/ayu-vim'
 "Plug 'lifepillar/vim-solarized8'
 "Plug 'nightsense/seabird'
