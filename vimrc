@@ -313,6 +313,9 @@ colorscheme hydrangea
 " Colorscheme extras
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
+let g:nord_italic = 1
+let g:nord_uniform_status_lines = 1
+let g:nord_comment_brightness = 12
 
 
 """"""""""""""""""""""""""""""""""""""""
