@@ -77,10 +77,6 @@ Plug 'rakr/vim-one' " colorscheme one
 "Plug 'morhetz/gruvbox'
 call plug#end()
 
-" NERDTree
-map <F2> ;NERDTreeToggle<CR>
-nmap <leader>n ;NERDTreeToggle<CR>
-
 " ALE plugin
 let g:ale_completion_enabled = 1
 let g:ale_sign_error = '>>'
@@ -90,7 +86,7 @@ let g:ale_sign_warning = '--'
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
-let g:ale_pattern_options = {'\.spec.js$': {'ale_enabled': 0}}
+let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
