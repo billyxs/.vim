@@ -328,6 +328,32 @@ noremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source vimrc
 noremap <leader>sv :source $MYVIMRC<cr>
 
+function! SearchWord()
+  let word = expand("<cword>")
+  echo word
+  execute Rg<space>word
+endfunction
+
+" FZF/Rg search
+nnoremap <leader>a :Rg<space><CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>w :call SearchWord()<CR>
+nnoremap <leader>bu :Buffers<CR>
+
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" Don't use arrows
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 " ESC from insert mode with jk
 inoremap jk <esc>
 " Don't allow <esc> in insert mode
