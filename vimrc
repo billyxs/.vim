@@ -378,8 +378,11 @@ nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
 " Motions
 nnoremap H 0
 onoremap H 0
+vnoremap H 0
+
 nnoremap L $
 onoremap L $
+vnoremap L $
 
 " save file
 nnoremap <leader><leader>s :update!<cr>
