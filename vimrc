@@ -411,12 +411,6 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
-" Snippet like mappings
-" Describe block
-nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
-
-" It block
-nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
 
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
@@ -436,6 +430,17 @@ nnoremap <C-l> <C-w>l
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Copy paragraph
+noremap cp yap<S-}>p
+
+" Snippet like mappings
+" Describe block
+nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+
+" It block
+nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+
 
 " Specify the behavior when switching between buffers
 try
