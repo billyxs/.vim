@@ -370,9 +370,15 @@ nnoremap <space>l guiw
 " capitalize
 nnoremap <space>i guiw~h
 
-" Surround word with quotes
-nnoremap <leader>"w viw<esc>a"<esc>bi"<esc>lel
-nnoremap <leader>'w viw<esc>a'<esc>bi'<esc>lel
+" Surrounds
+nnoremap <leader>" viw<esc>`<i"<esc>`>la"<esc>
+nnoremap <leader>' viw<esc>`<i'<esc>`>la'<esc>
+vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
+vnoremap <leader>' <esc>`<i'<esc>`>la'<esc>
+vnoremap <leader>( <esc>`<i(<esc>`>la)<esc>
+vnoremap <leader>) <esc>`<i(<esc>`>la)<esc>
+vnoremap <leader>[ <esc>`<i[<esc>`>la]<esc>
+vnoremap <leader>] <esc>`<i[<esc>`>la]<esc>
 
 " Motions
 nnoremap H 0
