@@ -35,6 +35,9 @@ let maplocalleader = "\\"
 "      vim-plug :PlugInstall, :PlugUpdate
 """""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+" Async run
+Plug 'skywind3000/asyncrun.vim'
+
 " Time tracking
 Plug 'wakatime/vim-wakatime'
 
