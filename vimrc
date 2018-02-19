@@ -270,11 +270,6 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" autocmd BufNewFile,BufRead *.json set ft=javascript
-autocmd BufNewFile,BufRead *.js set ft=javascript
-autocmd BufNewFile,BufReadPost *.md set filetype=mkd
-
-
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Colors and Fonts
@@ -294,16 +289,6 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" autocmd BufNewFile,BufRead *.json set ft=javascript
-" autocmd BufNewFile,BufRead *.js set ft=javascript
-autocmd BufNewFile,BufReadPost *.md set filetype=mkd
 
 " Colorscheme - Now playing
 colorscheme hydrangea
@@ -522,12 +507,19 @@ command! RFile call RemoveFile()
 
 
 """"""""""""""""""""""""""""""""""""""""
-"   => buffers
+"   => Buffers
 """"""""""""""""""""""""""""""""""""""""
+
+autocmd BufNewFile,BufRead *.py set ft=python
+autocmd BufNewFile,BufRead *.js set ft=javascript
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Javascript
 augroup filetype_javascript
   autocmd!
+  autocmd FileType javascript set formatprg=prettier\ --stdin
+  autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
   " Import modules for javascript
   autocmd Filetype javascript :iabbrev im import
 
