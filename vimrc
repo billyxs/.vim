@@ -393,6 +393,9 @@ vnoremap L $
 nnoremap <leader><leader>s :update!<cr>
 inoremap <leader><leader>s <esc>:update!<cr>
 
+" execute macro
+nnoremap Q @q<cr>
+
 " Save and quit with zz
 nnoremap zz ZZ
 
