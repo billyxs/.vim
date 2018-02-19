@@ -98,7 +98,7 @@ let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 
 " Airline
 let g:airline#extensions#ale#enabled = 1
@@ -513,7 +513,6 @@ function! RemoveFile()
   return 2
 endfunction
 command! RFile call RemoveFile()
-
 
 
 """"""""""""""""""""""""""""""""""""""""
