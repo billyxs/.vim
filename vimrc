@@ -60,9 +60,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 "" Syntax
-"Plug 'mxw/vim-jsx'
-"Plug 'othree/yajs.vim'
-Plug 'othree/es.next.syntax.vim'
+Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
+Plug 'tpope/vim-markdown'
+Plug 'jason0x43/vim-js-syntax'
+Plug 'pangloss/vim-javascript'
+
+" Window management
+Plug 'wesQ3/vim-windowswap'
 
 " Themes
 Plug 'arcticicestudio/nord-vim'
@@ -72,9 +77,9 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'rainglow/vim'
 Plug 'seesleestak/oceanic-next'
 Plug 'rakr/vim-one' " colorscheme one
-"Plug 'flazz/vim-colorschemes'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'lifepillar/vim-solarized8'
+Plug 'flazz/vim-colorschemes'
+Plug 'ayu-theme/ayu-vim'
+Plug 'lifepillar/vim-solarized8'
 "Plug 'nightsense/seabird'
 "Plug 'dunckr/vim-monokai-soda'
 "Plug 'morhetz/gruvbox'
