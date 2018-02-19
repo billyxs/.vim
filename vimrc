@@ -108,6 +108,12 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" tpope markdown syntax
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+" pangloss/vim-javascript
+let g:javascript_plugin_jsdoc = 1
+
 " vim-jsx - don't require .jsx extension
 let g:jsx_ext_required = 0
 
