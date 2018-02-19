@@ -80,9 +80,7 @@ Plug 'rakr/vim-one' " colorscheme one
 Plug 'flazz/vim-colorschemes'
 Plug 'ayu-theme/ayu-vim'
 Plug 'lifepillar/vim-solarized8'
-"Plug 'nightsense/seabird'
-"Plug 'dunckr/vim-monokai-soda'
-"Plug 'morhetz/gruvbox'
+Plug 'dunckr/vim-monokai-soda'
 call plug#end()
 
 " ALE plugin
@@ -291,7 +289,7 @@ if has("gui_running")
 endif
 
 " Colorscheme - Now playing
-colorscheme hydrangea
+colorscheme znake
 
 " Approved Themes
 "colorscheme hydrangea
@@ -305,9 +303,9 @@ colorscheme hydrangea
 "colorscheme petrel
 "colorscheme ayu
 "colorscheme solarized8_dark_flat
-"colorscheme gruvbox
 "colorscheme carbonized-dark
 "colorscheme OceanicNext
+"colorscheme znake
 
 " Colorscheme extras
 let g:oceanic_next_terminal_bold = 1
