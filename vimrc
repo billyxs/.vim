@@ -279,7 +279,7 @@ set ffs=unix,dos,mac
 if !exists(g:syntax_on)|syntax enable|endif
 
 if (has("termguicolors"))
-  set termguicolors
+    set termguicolors
 endif
 
 " Set extra options when running in GUI mode
@@ -336,9 +336,8 @@ endfunction
 " FZF/Rg search
 nnoremap <leader>a :Rg<space><CR>
 nnoremap <leader>f :Files<CR>
-nnoremap <leader>w :call SearchWord()<CR>
+" nnoremap <leader>w :call SearchWord()<CR>
 nnoremap <leader>bu :Buffers<CR>
-
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
