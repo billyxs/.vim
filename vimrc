@@ -428,6 +428,8 @@ nnoremap <C-l> <C-w>l
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+" open current director of current file in vertical split
+nnoremap <leader>vs :vs %:h<cr>
 
 " Copy paragraph
 noremap cp yap<S-}>p
