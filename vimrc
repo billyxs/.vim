@@ -395,6 +395,7 @@ nnoremap Q @q<cr>
 
 " Save and quit with zz
 nnoremap zz ZZ
+nnoremap <leader>q :q<cr>
 
 " Go to last buffer
 nnoremap <leader>bb :b#<cr>
