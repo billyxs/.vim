@@ -322,6 +322,9 @@ noremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source vimrc
 noremap <leader>sv :source $MYVIMRC<cr>
 
+" SEARCH!
+nnoremap <leader>/ :%s/\V/gc<Left><Left><Left>
+
 function! SearchWord()
   let word = expand("<cword>")
   echo word
