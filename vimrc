@@ -535,7 +535,7 @@ augroup filetype_javascript
   autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
   " Import modules for javascript
-  autocmd Filetype javascript :iabbrev im import
+  autocmd Filetype javascript :iabbrev im import<space><space>from<space><left><left><left><left><left><left><left>
 
   " Export modules and functions for javascript
   autocmd Filetype javascript :iabbrev exc export const =
