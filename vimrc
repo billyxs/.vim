@@ -547,10 +547,11 @@ augroup filetype_javascript
 "  autocmd BufWrite *.js :call DeleteTrailingWS()
 augroup END
 
+
 augroup filetype_markdown
   autocmd!
 
-  autocmd Filetype md :inoremap +link +<space>[](jkpi)<esc>
+  autocmd Filetype *.md :inoremap link +<space>[]()<esc><left>p<left>
 augroup END
 
 " Python
