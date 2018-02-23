@@ -524,6 +524,8 @@ command! RFile call RemoveFile()
 "   => Buffers
 """"""""""""""""""""""""""""""""""""""""
 
+" autocmd BufEnter *.md colorscheme sonofobsidian
+
 autocmd BufNewFile,BufRead *.py set ft=python
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
