@@ -66,9 +66,6 @@ Plug 'tpope/vim-markdown'
 Plug 'jason0x43/vim-js-syntax'
 Plug 'pangloss/vim-javascript'
 
-" Window management
-Plug 'wesQ3/vim-windowswap'
-
 " Themes
 Plug 'arcticicestudio/nord-vim'
 Plug 'beigebrucewayne/Turtles'
