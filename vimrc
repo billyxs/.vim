@@ -430,6 +430,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " open current director of current file in vertical split
 nnoremap <leader>vs :vs %:h<cr>
+nnoremap <leader>fs <C-w>f
 
 " Copy paragraph
 noremap cp yap<S-}>p
