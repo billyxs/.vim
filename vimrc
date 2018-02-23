@@ -74,7 +74,6 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'rainglow/vim'
 Plug 'seesleestak/oceanic-next'
 Plug 'rakr/vim-one' " colorscheme one
-Plug 'flazz/vim-colorschemes'
 Plug 'ayu-theme/ayu-vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'dunckr/vim-monokai-soda'
@@ -289,19 +288,56 @@ endif
 colorscheme znake
 
 " Approved Themes
-"colorscheme hydrangea
-"colorscheme spacegray
-"colorscheme one " one-dark
-"colorscheme juicy
-"colorscheme bold
-"colorscheme turtles
-"colorscheme vividchalk
-"colorscheme neodark
-"colorscheme petrel
-"colorscheme ayu
-"colorscheme solarized8_dark_flat
-"colorscheme carbonized-dark
+"colorscheme Benokai
 "colorscheme OceanicNext
+"colorscheme ayu
+"colorscheme blink-contrast
+"colorscheme bold
+"colorscheme candyman
+"colorscheme carbonized-dark
+"colorscheme crayon
+"colorscheme cthulhian
+"colorscheme darker-robin
+"colorscheme darkocean
+"colorscheme ekvoli
+"colorscheme elda
+"colorscheme eva01
+"colorscheme frozen
+"colorscheme gotham
+"colorscheme hawaii
+"colorscheme hub-contrast
+"colorscheme hybrid
+"colorscheme hydrangea
+"colorscheme jelleybeans
+"colorscheme jhdark
+"colorscheme loyal-contrast
+"colorscheme minimalist
+"colorscheme neodark
+"colorscheme newton
+"colorscheme one " one-dark
+"colorscheme overflow
+"colorscheme pencil
+"colorscheme petrel
+"colorscheme pleasure-contrast
+"colorscheme revelation
+"colorscheme seti
+"colorscheme shades-of-teal
+"colorscheme solarized8_dark_flat
+"colorscheme sonofobsidian
+"colorscheme southwest-fog
+"colorscheme spacegray
+"colorscheme tesla
+"colorscheme tropikos
+"colorscheme turtles
+"colorscheme twilight
+"colorscheme ubaryd
+"colorscheme underwater
+"colorscheme underwater-mod
+"colorscheme vanzan_color
+"colorscheme vividchalk
+"colorscheme vj
+"colorscheme watermark
+"colorscheme whitebox
 "colorscheme znake
 
 " Colorscheme extras
@@ -358,6 +394,8 @@ inoremap <esc> <nop>
 " delete line
 inoremap <c-d> <esc>ddi
 
+" change colorscheme
+nnoremap <leader>c :Colors<cr>
 
 "" Casing
 " uppercase
