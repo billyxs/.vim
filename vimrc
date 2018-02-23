@@ -288,57 +288,70 @@ endif
 colorscheme znake
 
 " Approved Themes
-"colorscheme Benokai
-"colorscheme OceanicNext
-"colorscheme ayu
-"colorscheme blink-contrast
-"colorscheme bold
-"colorscheme candyman
-"colorscheme carbonized-dark
-"colorscheme crayon
-"colorscheme cthulhian
-"colorscheme darker-robin
-"colorscheme darkocean
-"colorscheme ekvoli
-"colorscheme elda
-"colorscheme eva01
-"colorscheme frozen
-"colorscheme gotham
-"colorscheme hawaii
-"colorscheme hub-contrast
-"colorscheme hybrid
-"colorscheme hydrangea
-"colorscheme jelleybeans
-"colorscheme jhdark
-"colorscheme loyal-contrast
-"colorscheme minimalist
-"colorscheme neodark
-"colorscheme newton
-"colorscheme one " one-dark
-"colorscheme overflow
-"colorscheme pencil
-"colorscheme petrel
-"colorscheme pleasure-contrast
-"colorscheme revelation
-"colorscheme seti
-"colorscheme shades-of-teal
-"colorscheme solarized8_dark_flat
-"colorscheme sonofobsidian
-"colorscheme southwest-fog
-"colorscheme spacegray
-"colorscheme tesla
-"colorscheme tropikos
-"colorscheme turtles
-"colorscheme twilight
-"colorscheme ubaryd
-"colorscheme underwater
-"colorscheme underwater-mod
-"colorscheme vanzan_color
-"colorscheme vividchalk
-"colorscheme vj
-"colorscheme watermark
-"colorscheme whitebox
-"colorscheme znake
+let themes = [ "Benokai",
+      \"OceanicNext",
+      \"ayu",
+      \"blink-contrast",
+      \"bold",
+      \"candyman",
+      \"carbonized-dark",
+      \"crayon",
+      \"cthulhian",
+      \"darker-robin",
+      \"darkocean",
+      \"ekvoli",
+      \"elda",
+      \"eva01",
+      \"frozen",
+      \"gotham",
+      \"hawaii",
+      \"hub-contrast",
+      \"hybrid",
+      \"hydrangea",
+      \"jelleybeans",
+      \"jhdark",
+      \"loyal-contrast",
+      \"minimalist",
+      \"neodark",
+      \"newton",
+      \"one",
+      \"overflow",
+      \"pencil",
+      \"petrel",
+      \"pleasure-contrast",
+      \"revelation",
+      \"seti",
+      \"shades-of-teal",
+      \"solarized8_dark_flat",
+      \"sonofobsidian",
+      \"southwest-fog",
+      \"spacegray",
+      \"tesla",
+      \"tropikos",
+      \"turtles",
+      \"twilight",
+      \"ubaryd",
+      \"underwater",
+      \"underwater-mod",
+      \"vanzan_color",
+      \"vividchalk",
+      \"vj",
+      \"watermark",
+      \"whitebox",
+      \"znake" ]
+
+function! ChangeTheme()
+  if g:colors_name ==# g:themes[-1]
+    execute 'colorscheme '.g:themes[0]
+  else
+    execute 'colorscheme '.g:themes[index(g:themes, g:colors_name) + 1]
+  endif
+
+  echom 'Now playing:'.g:colors_name
+endfunction
+command! CTheme call ChangeTheme()
+nnoremap <leader>cn :CTheme<cr>
+
 
 " Colorscheme extras
 let g:oceanic_next_terminal_bold = 1
