@@ -3,7 +3,6 @@
 " Last Change: Dec 28, 2010
 " Version: 0.3
 
-let colors_name = "underwater-mod"
 
 set background=dark
 hi clear
@@ -11,7 +10,7 @@ hi clear
 if exists("syntax_on")
     syntax reset
 endif
-
+let colors_name = "underwater-mod"
 
 if version >= 700
     hi CursorLine       guibg=#18374F
@@ -54,7 +53,7 @@ hi Constant 	        guifg=#ffc287   guibg=bg        gui=none
 hi Function 	        guifg=#AF81F4   guibg=bg        gui=none
 hi Identifier 	        guifg=#889ce8   guibg=bg        gui=none
 hi Ignore 		guifg=bg        guibg=bg        gui=none
-hi link Number	        Constant	
+hi link Number	        Constant
 hi PreProc 		guifg=#ef7760   guibg=bg        gui=none
 hi Keyword		guifg=#8ac6f2   guibg=bg        gui=none
 hi Special		guifg=#b9e19d   guibg=bg        gui=none
