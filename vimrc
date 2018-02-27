@@ -340,16 +340,15 @@ let themes = [ "Benokai",
       \"znake" ]
 
 function! ChangeTheme()
-  if g:colors_name ==# g:themes[-1]
+  echom index(g:themes, g:colors_name).g:colors_name
+  if g:colors_name || g:colors_name ==# g:themes[-1]
     execute 'colorscheme '.g:themes[0]
   else
-    execute 'colorscheme '.g:themes[index(g:themes, g:colors_name) + 1]
+    let s:n = index(g:themes, g:colors_name) + 1
+    execute 'colorscheme '.g:themes[s:n]
   endif
-
-  echom 'Now playing:'.g:colors_name
 endfunction
-command! CTheme call ChangeTheme()
-nnoremap <leader>cn :CTheme<cr>
+nnoremap <leader>cn :call ChangeTheme()<cr>
 
 
 " Colorscheme extras
