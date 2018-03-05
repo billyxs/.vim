@@ -36,17 +36,10 @@ let maplocalleader = "\\"
 """""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 " Async run
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asyncrun.vim'
 
 " Time tracking
 Plug 'wakatime/vim-wakatime'
-
-" Startup time details
-Plug 'tweekmonster/startuptime.vim'
-
-" Text, Editing
-" Plug 'scrooloose/nerdcommenter'
-" Plug 'JamshedVesuna/vim-markdown-preview'
 
 " GIT,
 Plug 'airblade/vim-gitgutter'
@@ -61,10 +54,10 @@ Plug 'junegunn/fzf.vim'
 
 "" Syntax
 Plug 'mxw/vim-jsx'
-Plug 'othree/yajs.vim'
-Plug 'tpope/vim-markdown'
-Plug 'jason0x43/vim-js-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-markdown'
+Plug 'othree/yajs.vim'
+Plug 'jason0x43/vim-js-syntax'
 
 " Themes
 Plug 'arcticicestudio/nord-vim'
