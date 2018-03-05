@@ -396,7 +396,7 @@ inoremap <esc> <nop>
 inoremap <c-d> <esc>ddi
 
 " change colorscheme
-nnoremap <leader>c :Colors<cr>
+nnoremap <leader>cc :Colors<cr>
 
 "" Casing
 " uppercase
@@ -573,8 +573,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Javascript
 augroup filetype_javascript
   autocmd!
-  autocmd FileType javascript set formatprg=prettier\ --stdin
-  autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+  " autocmd FileType javascript set formatprg=prettier\ --stdin
+  " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
   " Import modules for javascript
   autocmd Filetype javascript :iabbrev im import<space><space>from<space><left><left><left><left><left><left><left>
