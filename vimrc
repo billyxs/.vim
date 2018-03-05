@@ -112,10 +112,6 @@ let g:used_javascript_libs = 'react'
 " neodark
 let g:neodark#background = '#101010'
 
-" Markdown
-let vim_markdown_preview_github=1
-let vim_markdown_preview_browser='Google Chrome'
-
 
 """"""""""""""""""""""""""""""""""""""""
 "   => General
