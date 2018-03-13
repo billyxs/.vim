@@ -124,6 +124,12 @@ set history=10000
 filetype plugin on
 filetype indent on
 
+set nocompatible
+
+" 'matchit.vim' is built-in so let's enable it!
+" Hit '%' on 'if' to jump to 'else'.
+runtime macros/matchit.vim
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
