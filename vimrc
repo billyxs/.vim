@@ -446,7 +446,8 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>bb :b#<cr>
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
-nnoremap gb :ls<cr>:buffer<space>
+" nnoremap gb :ls<cr>:buffer<space>
+nnoremap gb :Buffers<cr>
 
 " Go to windows with hjkl
 nnoremap <c-h> <c-w>h
