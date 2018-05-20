@@ -481,12 +481,6 @@ nnoremap <leader>j i<CR><ESC>
 nnoremap <space>o o<ESC>
 nnoremap <space>O O<ESC>
 
-" Smart way to move between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " open current director of current file in vertical split
@@ -621,17 +615,6 @@ augroup END
 "  autocmd!
 "  autocmd BufWrite *.py :call DeleteTrailingWS()
 "augroup END
-
-
-
-""""""""""""""""""""""""""""""""""""""""
-"   => Status Line
-""""""""""""""""""""""""""""""""""""""""
-set statusline=%f
-set statusline+=%=
-set statusline+=%l
-set statusline+=/
-set statusline+=%L
 
 
 """""""""""""""""""""""""""""""""""""""""
