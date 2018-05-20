@@ -465,6 +465,11 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
+" Full screen window 
+nnoremap <c-m> <c-w>\|
+" Equal width windows
+nnoremap <c-n> <c-w>=
+
 
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
