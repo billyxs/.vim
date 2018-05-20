@@ -404,6 +404,13 @@ inoremap <esc> <nop>
 " delete line
 inoremap <c-d> <esc>ddi
 
+" copy paste
+nnoremap <space>c viw"gy
+nnoremap <space>v "gp
+vnoremap <space>c "gy
+vnoremap <space>v "gp
+
+
 " change colorscheme
 nnoremap <leader>cc :Colors<cr>
 
