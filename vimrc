@@ -224,7 +224,7 @@ set shiftwidth=2
 retab
 
 " remove trailing spaces on :w
-autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType javascript autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " highlight lines that cross 80 characters
 highlight ColorColumn ctermbg=cyan guibg=cyan guifg=black
@@ -248,8 +248,6 @@ let g:netrw_winsize = 20
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
 "augroup END
-
-autocmd BufWritePre * %s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "   => Files, backups and undo
