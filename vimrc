@@ -57,10 +57,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-markdown'
-Plug 'othree/yajs.vim'
-Plug 'jason0x43/vim-js-syntax'
 
 " Themes
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'arcticicestudio/nord-vim'
 Plug 'beigebrucewayne/Turtles'
 Plug 'KeitaNakamura/neodark.vim'
@@ -70,6 +69,7 @@ Plug 'seesleestak/oceanic-next'
 Plug 'rakr/vim-one' " colorscheme one
 Plug 'ayu-theme/ayu-vim'
 Plug 'lifepillar/vim-solarized8'
+Plug 'altercation/vim-colors-solarized'
 Plug 'dunckr/vim-monokai-soda'
 call plug#end()
 
@@ -282,7 +282,7 @@ if has("gui_running")
 endif
 
 " Colorscheme - Now playing
-colorscheme znake
+colorscheme gotham 
 
 " Approved Themes
 let themes = [ "Benokai",
