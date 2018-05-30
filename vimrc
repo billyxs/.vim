@@ -54,13 +54,23 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 "" Syntax
-Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'larsbs/vim-xmll'
+"Plug 'othree/html5.vim'
 Plug 'tpope/vim-markdown'
 
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tomasiser/vim-code-dark'
+Plug 'larsbs/vimterial_dark'
+Plug 'wimstefan/vim-artesanal'
+Plug 'joshdick/onedark.vim'
+Plug 'Alvarocz/vim-fresh'
+Plug 'bcicen/vim-vice'
 Plug 'arcticicestudio/nord-vim'
+Plug 'kamwitsta/nordisk'
+Plug 'widatama/vim-phoenix'
 Plug 'beigebrucewayne/Turtles'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'ajh17/Spacegray.vim'
@@ -284,10 +294,11 @@ if has("gui_running")
 endif
 
 " Colorscheme - Now playing
-colorscheme gotham 
+colorscheme vimterial_dark 
 
 " Approved Themes
 let themes = [ "Benokai",
+      \"vimterial_dark",
       \"OceanicNext",
       \"ayu",
       \"blink-contrast",
@@ -300,6 +311,7 @@ let themes = [ "Benokai",
       \"ekvoli",
       \"elda",
       \"eva01",
+      \"fresh",
       \"frozen",
       \"gotham",
       \"iceberg-contrast",
@@ -313,6 +325,7 @@ let themes = [ "Benokai",
       \"minimalist",
       \"neodark",
       \"newton",
+      \"nord",
       \"one",
       \"overflow",
       \"pencil",
