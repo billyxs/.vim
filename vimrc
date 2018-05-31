@@ -483,6 +483,10 @@ nnoremap <c-m> <c-w>\|
 " Equal width windows
 nnoremap <c-n> <c-w>=
 
+" Terminal window
+nnoremap <leader>t :terminal<cr>
+nnoremap <leader>vt :vert terminal<cr>
+
 
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
