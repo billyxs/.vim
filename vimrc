@@ -91,7 +91,7 @@ let g:ale_sign_column_always = 1
 
 " :ALEFix will try and fix your JS code with ESLint.
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
+\   'javascript': ['prettier', 'eslint'],
 \}
 let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
 
@@ -121,7 +121,7 @@ let g:used_javascript_libs = 'react'
 
 " Themes
 " neodark
-let g:neodark#background = '#101010'
+" let g:neodark#background = '#101010'
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -155,10 +155,10 @@ set mouse=n
 set path+=**
 
 " Show line numbers
-set number
+"set number
 
 " Show line numbers relative to cursor
-set relativenumber
+"set relativenumber
 
 " Minimum number of columns for line numbers
 set numberwidth=3
