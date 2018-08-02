@@ -64,8 +64,9 @@ Plug 'tpope/vim-markdown'
 
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'tomasiser/vim-code-dark'
+Plug 'roosta/vim-srcery'
 Plug 'larsbs/vimterial_dark'
+Plug 'tomasiser/vim-code-dark'
 Plug 'wimstefan/vim-artesanal'
 Plug 'joshdick/onedark.vim'
 Plug 'Alvarocz/vim-fresh'
@@ -92,9 +93,8 @@ let g:ale_sign_warning = '--'
 let g:ale_sign_column_always = 1
 
 " :ALEFix will try and fix your JS code with ESLint.
-let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
-\}
+" let g:ale_fixers = { 'javascript': [ 'eslint' ] }
+let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint' ] }
 let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
@@ -300,6 +300,7 @@ colorscheme vimterial_dark
 
 " Approved Themes
 let themes = [ "Benokai",
+      \"srcery",
       \"vimterial_dark",
       \"OceanicNext",
       \"ayu",
