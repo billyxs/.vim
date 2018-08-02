@@ -62,28 +62,12 @@ Plug 'larsbs/vim-xmll'
 "Plug 'othree/html5.vim'
 Plug 'tpope/vim-markdown'
 
+Plug 'takac/vim-spotifysearch'
+
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'roosta/vim-srcery'
 Plug 'larsbs/vimterial_dark'
-Plug 'tomasiser/vim-code-dark'
-Plug 'wimstefan/vim-artesanal'
-Plug 'joshdick/onedark.vim'
-Plug 'Alvarocz/vim-fresh'
-Plug 'bcicen/vim-vice'
-Plug 'arcticicestudio/nord-vim'
-Plug 'kamwitsta/nordisk'
-Plug 'widatama/vim-phoenix'
-Plug 'beigebrucewayne/Turtles'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'ajh17/Spacegray.vim'
-Plug 'rainglow/vim'
-Plug 'seesleestak/oceanic-next'
-Plug 'rakr/vim-one' " colorscheme one
-Plug 'ayu-theme/ayu-vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'altercation/vim-colors-solarized'
-Plug 'dunckr/vim-monokai-soda'
+Plug 'kadekillary/Turtles'
 call plug#end()
 
 " ALE plugin
@@ -299,59 +283,12 @@ endif
 colorscheme vimterial_dark 
 
 " Approved Themes
-let themes = [ "Benokai",
-      \"srcery",
+let themes = [
       \"vimterial_dark",
-      \"OceanicNext",
-      \"ayu",
-      \"blink-contrast",
-      \"bold",
-      \"candyman",
-      \"crayon",
-      \"cthulhian",
-      \"darker-robin",
-      \"darkocean",
-      \"ekvoli",
-      \"elda",
-      \"eva01",
-      \"fresh",
-      \"frozen",
-      \"gotham",
-      \"iceberg-contrast",
-      \"hawaii",
-      \"hub-contrast",
-      \"hybrid",
-      \"hydrangea",
-      \"jellybeans",
-      \"jhdark",
-      \"loyal-contrast",
-      \"minimalist",
-      \"neodark",
-      \"newton",
-      \"nord",
-      \"one",
-      \"overflow",
-      \"pencil",
-      \"petrel",
-      \"pleasure-contrast",
-      \"revelation",
-      \"seti",
-      \"shades-of-teal",
-      \"sonofobsidian",
-      \"southwest-fog",
+      \"dracula",
       \"spacegray",
-      \"tesla",
-      \"tropikos",
       \"turtles",
       \"twilight",
-      \"ubaryd",
-      \"underwater",
-      \"underwater-mod",
-      \"vanzan_color",
-      \"vividchalk",
-      \"vj",
-      \"watermark",
-      \"whitebox",
       \"znake" ]
 
 function! ChangeTheme()
