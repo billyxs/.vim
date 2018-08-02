@@ -15,7 +15,6 @@
 "   => Abbreviations
 "   => Scripts
 "   => Buffers
-"   => Status Line
 "
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
@@ -38,6 +37,9 @@ call plug#begin('~/.vim/plugged')
 " Async run
 " Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/goyo.vim'
+
+" Hard mode
+Plug 'wikitopian/hardmode'
 
 " Time tracking
 Plug 'wakatime/vim-wakatime'
@@ -423,17 +425,8 @@ nnoremap <space>v "gp
 vnoremap <space>c "gy
 vnoremap <space>v "gp
 
-
 " change colorscheme
 nnoremap <leader>cc :Colors<cr>
-
-"" Casing
-" uppercase
-nnoremap <space>u gUiw
-" lowercase
-nnoremap <space>l guiw
-" capitalize
-nnoremap <space>i guiw~h
 
 " Surrounds
 nnoremap <leader>" viw<esc>`<i"<esc>`>la"<esc>
@@ -495,9 +488,6 @@ nnoremap k gk
 " Create a newline from where the cursor is
 nnoremap <leader>j i<CR><ESC>
 
-nnoremap <space>o o<ESC>
-nnoremap <space>O O<ESC>
-
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 " open current director of current file in vertical split
@@ -554,7 +544,6 @@ function! EasyConsoleLog()
 endfunction
 
 nnoremap <leader>log :call EasyConsoleLog()<CR>
-
 
 " Delete trailing white space on save
 "func! DeleteTrailingWS()
