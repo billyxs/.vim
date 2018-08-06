@@ -41,6 +41,9 @@ Plug 'junegunn/goyo.vim'
 " Hard mode
 Plug 'wikitopian/hardmode'
 
+" Formatting
+Plug 'dhruvasagar/vim-table-mode'
+
 " Time tracking
 Plug 'wakatime/vim-wakatime'
 
