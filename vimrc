@@ -353,9 +353,9 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " ESC from insert mode with jk
-inoremap jk <esc>
+" inoremap jk <esc>
 " Don't allow <esc> in insert mode
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 
 " delete line
 inoremap <c-d> <esc>ddi
