@@ -120,6 +120,14 @@ let g:used_javascript_libs = 'react'
 " Sets how many lines of history VIM has to remember
 set history=10000
 
+" Persist undo after terminating a session
+set undodir=~/.vim/undodir
+set undofile
+" How many undos
+set undolevels=1000
+" number of lines to save for undo
+set undoreload=10000
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
