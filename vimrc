@@ -331,9 +331,9 @@ let g:nord_comment_brightness = 12
 
 "" Vim file manager
 " Open vimrc in split
-noremap <leader>ev :vsplit $MYVIMRC<cr>
+noremap <leader><leader>ev :vsplit $MYVIMRC<cr>
 " Source vimrc
-noremap <leader>sv :source $MYVIMRC<cr>
+noremap <leader><leader>sv :source $MYVIMRC<cr>
 
 " SEARCH!
 nnoremap <leader>/ :%s/\V/gc<Left><Left><Left>
@@ -400,8 +400,8 @@ onoremap L $
 vnoremap L $
 
 " save file
-nnoremap <leader><leader>s :update!<cr>
-inoremap <leader><leader>s <esc>:update!<cr>
+nnoremap <leader>s :update!<cr>
+inoremap <leader>s <esc>:update!<cr>
 
 " execute macro
 nnoremap Q @q<cr>
