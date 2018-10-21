@@ -61,9 +61,11 @@ Plug 'junegunn/fzf.vim'
 "" Syntax
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
 Plug 'larsbs/vim-xmll'
 "Plug 'othree/html5.vim'
 Plug 'tpope/vim-markdown'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 Plug 'takac/vim-spotifysearch'
 
