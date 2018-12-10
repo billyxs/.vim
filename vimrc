@@ -67,8 +67,6 @@ Plug 'larsbs/vim-xmll'
 Plug 'tpope/vim-markdown'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
-Plug 'takac/vim-spotifysearch'
-
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'larsbs/vimterial_dark'
@@ -109,6 +107,9 @@ let g:jsx_ext_required = 0
 
 " javascript-libraries-syntax.vim
 let g:used_javascript_libs = 'react'
+
+" python-mode set for python3
+let g:pymode_python = 'python3'
 
 " Themes
 " neodark
