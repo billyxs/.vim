@@ -23,6 +23,11 @@ function! CopyPathDir()
   execute "let @+=expand('%:p:h')"
 endfunction
 
+function! MarkDownLink()
+  execute "normal! o- [](".@*.")"
+  execute "normal! T["
+endfunction
+
 " Delete trailing white space on save
 "function! DeleteTrailingWS()
 "  exe "normal mz"
