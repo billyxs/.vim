@@ -74,6 +74,7 @@ Plug 'kadekillary/Turtles'
 call plug#end()
 
 " ALE plugin
+let g:ale_completion_enabled = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
 let g:ale_sign_column_always = 1
@@ -143,6 +144,9 @@ runtime macros/matchit.vim
 
 " Set to auto read when a file is changed from the outside
 set autoread
+
+" Fix ALE autocomplete eagerness
+set completeopt+=noinsert
 
 " copy to clipboard
 set clipboard=unnamed
@@ -474,7 +478,6 @@ autocmd BufReadPost *
 set viminfo^=%
 
 
-
 """"""""""""""""""""""""""""""""""""""""
 "   => Abbreviations
 """"""""""""""""""""""""""""""""""""""""
@@ -487,52 +490,9 @@ iabbrev bh@ billy.montgomery@hixme.com
 """"""""""""""""""""""""""""""""""""""""
 "   => Scripts
 """"""""""""""""""""""""""""""""""""""""
-
 " Javascript
-" Easy console log
-function! EasyConsoleLog()
-  let word = expand("<cword>")
-  execute "normal! oconsole.log('".word." = ', ".word.")"
-endfunction
 
-nnoremap <leader>log :call EasyConsoleLog()<CR>
-
-" Delete trailing white space on save
-"func! DeleteTrailingWS()
-"  exe "normal mz"
-"  %s/\s\+$//ge
-"  exe "normal `z"
-"endfunc
-
-
-" Rebuild tests
-let s:counter = 0
-function! MyCounter()
-  let s:counter = s:counter + 1
-  echo s:counter
-endfunction
-command! Tick call MyCounter()
-
-function! RemoveFile()
-  echo 'buf -' .bufname('#:p')
-  let result = confirm("Are you sure?", "&Yes\n&No\n")
-  if (result ==# 1)
-    echom "Deleting " . bufname("%") . "..."
-    let theFile = expand('%:p')
-    let dit = delete(theFile)
-    if (dit)
-      echo "Deleted " . theFile
-    else
-      echohl "Failed to delete " . theFile
-    endif
-
-    execute "e#"
-    return 1
-  endif
-  return 2
-endfunction
 command! RFile call RemoveFile()
-
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers
@@ -547,6 +507,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Javascript
 augroup filetype_javascript
   autocmd!
+  nnoremap <leader>log :call EasyConsoleLog()<CR>
+
   " autocmd FileType javascript set formatprg=prettier\ --stdin
   " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
@@ -569,11 +531,14 @@ augroup filetype_markdown
 augroup END
 
 " Python
-"augroup filetype_python
-"  autocmd!
-"  autocmd BufWrite *.py :call DeleteTrailingWS()
-"augroup END
+augroup filetype_python
+  autocmd!
+  nnoremap <leader>log :call PythonLog()<CR>
 
+  autocmd BufWrite *.py :call DeleteTrailingWS()
+augroup END
+
+source ~/.vim/functions.vim
 
 """""""""""""""""""""""""""""""""""""""""
 :finish
