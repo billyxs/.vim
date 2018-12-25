@@ -24,8 +24,7 @@ function! CopyPathDir()
 endfunction
 
 function! MarkDownLink()
-  execute "normal! o- [](".@*.")"
-  execute "normal! T["
+  execute "normal! o- [](".@*.")\<esc>T["
 endfunction
 
 " Delete trailing white space on save

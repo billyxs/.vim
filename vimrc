@@ -528,7 +528,7 @@ augroup filetype_markdown
   autocmd!
   nnoremap <leader>li :call MarkDownLink()<CR>
 
-  autocmd Filetype *.md :inoremap link +<space>[]()<esc><left>p<left>
+  autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
 augroup END
 
 " Python
