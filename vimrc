@@ -507,7 +507,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Javascript
 augroup filetype_javascript
   autocmd!
-  nnoremap <leader>log :call EasyConsoleLog()<CR>
+  autocmd FileType javascript nnoremap <leader>log :call EasyConsoleLog(0)<CR>
+  autocmd FileType javascript vnoremap <leader>log :call EasyConsoleLog(1)<CR>
 
   " autocmd FileType javascript set formatprg=prettier\ --stdin
   " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
@@ -534,9 +535,10 @@ augroup END
 " Python
 augroup filetype_python
   autocmd!
-  nnoremap <leader>log :call PythonLog()<CR>
+  autocmd FileType python nnoremap <leader>log :call PythonLog(0)<CR>
+  autocmd FileType python vnoremap <leader>log :call PythonLog(1)<CR>
 
-  autocmd BufWrite *.py :call DeleteTrailingWS()
+  autocmd FileType python BufWrite *.py :call DeleteTrailingWS()
 augroup END
 
 source ~/.vim/functions.vim
