@@ -1,7 +1,6 @@
 " Log
 function! LogIt(command, isVisual)
   if (a:isVisual)
-    execute "normal! \"gy"
     let expression = @g
     let message = ""
   else 
