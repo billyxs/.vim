@@ -508,7 +508,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 augroup filetype_javascript
   autocmd!
   autocmd FileType javascript nnoremap <leader>log :call EasyConsoleLog(0)<CR>
-  autocmd FileType javascript vnoremap <leader>log :call EasyConsoleLog(1)<CR>
+  autocmd FileType javascript vnoremap <leader>log "gy:call EasyConsoleLog(1)<CR>
 
   " autocmd FileType javascript set formatprg=prettier\ --stdin
   " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
@@ -536,7 +536,7 @@ augroup END
 augroup filetype_python
   autocmd!
   autocmd FileType python nnoremap <leader>log :call PythonLog(0)<CR>
-  autocmd FileType python vnoremap <leader>log :call PythonLog(1)<CR>
+  autocmd FileType python vnoremap <leader>log "gy:call PythonLog(1)<CR>
 
   autocmd FileType python BufWrite *.py :call DeleteTrailingWS()
 augroup END
