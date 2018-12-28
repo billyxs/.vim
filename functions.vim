@@ -1,12 +1,27 @@
-" Easy console log
-function! EasyConsoleLog()
-  let word = expand("<cword>")
-  execute "normal! oconsole.log('".word." = ', ".word.")"
+" Log
+function! LogIt(command, isVisual)
+  if (a:isVisual)
+    execute "normal! \"gy"
+    let expression = @g
+    let message = ""
+  else 
+    let expression = expand("<cword>")
+    let message = expression
+  endif
+  
+  execute "normal! o".a:command."('".message." = ', ".expression.")"
+
+  if (a:isVisual)
+    execute "normal! ^f'"
+  endif
 endfunction
 
-function! PythonLog()
-  let word = expand("<cword>")
-  execute "normal! oprint('".word." = ', ".word.")"
+function! EasyConsoleLog(isVisual)
+  call LogIt('console.log', a:isVisual)
+endfunction
+
+function! PythonLog(isVisual)
+  call LogIt('print', a:isVisual)
 endfunction
 
 " Copy current buffer path to multiple buffers
