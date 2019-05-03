@@ -81,7 +81,7 @@ let g:ale_sign_column_always = 1
 
 " :ALEFix will try and fix your JS code with ESLint.
 " let g:ale_fixers = { 'javascript': [ 'eslint' ] }
-let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint' ] }
+" let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint' ] }
 " let g:ale_fixers = { 'javascript': [ 'prettier', 'tslint' ] }
 let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
 
@@ -509,6 +509,10 @@ augroup filetype_javascript
   autocmd!
   autocmd FileType javascript nnoremap <leader>log :call EasyConsoleLog(0)<CR>
   autocmd FileType javascript vnoremap <leader>log "gy:call EasyConsoleLog(1)<CR>
+
+  command Lintjs call Lintjs()
+  command Lintjsp call Lintjsp()
+  command Lintts call Lintts()
 
   " autocmd FileType javascript set formatprg=prettier\ --stdin
   " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %

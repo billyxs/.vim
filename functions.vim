@@ -68,3 +68,18 @@ function! RemoveFile()
   return 2
 endfunction
 
+" toggleLint
+function! Lintjs() 
+  let g:ale_fixers = { 'javascript': [ 'eslint' ] }
+  echo "eslint"
+endfunction
+
+function! Lintjsp() 
+  let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint' ] }
+  echo "eslint with prettier"
+endfunction
+
+function! Lintts() 
+  let g:ale_fixers = { 'javascript': [ 'prettier', 'tslint' ] }
+  echo "tslint with prettier"
+endfunction
