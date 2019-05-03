@@ -67,6 +67,8 @@ Plug 'larsbs/vim-xmll'
 Plug 'tpope/vim-markdown'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
+Plug 'metakirby5/codi.vim'
+
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'larsbs/vimterial_dark'
