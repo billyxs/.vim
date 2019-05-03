@@ -91,14 +91,6 @@ let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
 " This is off by default.
 let g:ale_fix_on_save = 1
 
-" Airline
-let g:airline#extensions#ale#enabled = 1
-let g:airline_powerline_fonts = 1
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
 " tpope markdown syntax
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
