@@ -41,13 +41,6 @@ function! MarkDownLink()
   execute "normal! o- [](".@*.")\<esc>T["
 endfunction
 
-" Delete trailing white space on save
-"function! DeleteTrailingWS()
-"  exe "normal mz"
-"  %s/\s\+$//ge
-"  exe "normal `z"
-"endfunction
-
 " Remove File
 function! RemoveFile()
   echo 'buf -' .bufname('#:p')

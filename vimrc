@@ -45,7 +45,7 @@ Plug 'wikitopian/hardmode'
 Plug 'dhruvasagar/vim-table-mode'
 
 " Time tracking
-Plug 'wakatime/vim-wakatime'
+" Plug 'wakatime/vim-wakatime'
 
 " GIT,
 Plug 'airblade/vim-gitgutter'
@@ -492,7 +492,6 @@ set viminfo^=%
 
 " Email addresses
 iabbrev bg@ billy.montgomery@gmail.com
-iabbrev bh@ billy.montgomery@hixme.com
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -501,6 +500,8 @@ iabbrev bh@ billy.montgomery@hixme.com
 " Javascript
 
 command! RFile call RemoveFile()
+
+command! E Explore
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers
@@ -518,9 +519,9 @@ augroup filetype_javascript
   autocmd FileType javascript nnoremap <leader>log :call EasyConsoleLog(0)<CR>
   autocmd FileType javascript vnoremap <leader>log "gy:call EasyConsoleLog(1)<CR>
 
-  command Lintjs call Lintjs()
-  command Lintjsp call Lintjsp()
-  command Lintts call Lintts()
+  command! Lintjs call Lintjs()
+  command! Lintjsp call Lintjsp()
+  command! Lintts call Lintts()
 
   " autocmd FileType javascript set formatprg=prettier\ --stdin
   " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
@@ -533,7 +534,6 @@ augroup filetype_javascript
   autocmd Filetype javascript :iabbrev exf export function() {}
   autocmd Filetype javascript :iabbrev exd export default
   autocmd Filetype javascript nnoremap <leader>c I//<esc>
-"  autocmd BufWrite *.js :call DeleteTrailingWS()
 augroup END
 
 
@@ -549,8 +549,6 @@ augroup filetype_python
   autocmd!
   autocmd FileType python nnoremap <leader>log :call PythonLog(0)<CR>
   autocmd FileType python vnoremap <leader>log "gy:call PythonLog(1)<CR>
-
-  autocmd FileType python BufWrite *.py :call DeleteTrailingWS()
 augroup END
 
 source ~/.vim/functions.vim
