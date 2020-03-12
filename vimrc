@@ -72,6 +72,10 @@ Plug 'metakirby5/codi.vim'
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'larsbs/vimterial_dark'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'rakr/vim-one'
+Plug 'mhartington/oceanic-next'
+Plug 'arcticicestudio/nord-vim'
 Plug 'kadekillary/Turtles'
 call plug#end()
 
@@ -291,26 +295,37 @@ if has("gui_running")
     set guitablabel=%M\ %t
 endif
 
+set background=dark
+
 " Colorscheme - Now playing
-colorscheme vimterial_dark 
+colorscheme one  " vimterial_dark
 
 " Approved Themes
 let themes = [
-      \"vimterial_dark",
+      \"ayu",
       \"dracula",
+      \"nord",
+      \"OceanicNext",
+      \"one",
+      \"palenight",
       \"spacegray",
       \"turtles",
       \"twilight",
+      \"vimterial_dark",
       \"znake" ]
 
 function! ChangeTheme()
   echom index(g:themes, g:colors_name).g:colors_name
+  let new_theme = ""
   if g:colors_name || g:colors_name ==# g:themes[-1]
-    execute 'colorscheme '.g:themes[0]
+    let new_theme = g:themes[0]
   else
     let s:n = index(g:themes, g:colors_name) + 1
-    execute 'colorscheme '.g:themes[s:n]
+    let new_theme = g:themes[s:n]
   endif
+
+  execute 'colorscheme '.new_theme
+  echo new_theme
 endfunction
 nnoremap <leader>cn :call ChangeTheme()<cr>
 
@@ -320,7 +335,6 @@ let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:nord_italic = 1
 let g:nord_uniform_status_lines = 1
-let g:nord_comment_brightness = 12
 
 
 """"""""""""""""""""""""""""""""""""""""
