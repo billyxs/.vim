@@ -454,6 +454,8 @@ nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
 " It block
 nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
 
+" Spell check with fzf
+nnoremap z= :call FzfSpell()<cr>
 
 " Specify the behavior when switching between buffers
 try
