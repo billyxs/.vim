@@ -298,7 +298,7 @@ endif
 set background=dark
 
 " Colorscheme - Now playing
-colorscheme one  " vimterial_dark
+colorscheme vimterial_dark
 
 " Approved Themes
 let themes = [

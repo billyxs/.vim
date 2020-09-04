@@ -86,3 +86,11 @@ function! FzfSpell()
   let suggestions = spellsuggest(expand("<cword>"))
   return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10})
 endfunction
+
+" Today's date
+function! Date()
+  let date = strftime("%Y-%m-%d")
+  echo date
+endfunction
+
+  
