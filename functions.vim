@@ -88,9 +88,10 @@ function! FzfSpell()
 endfunction
 
 " Today's date
-function! Date()
+function! InsertDate()
   let date = strftime("%Y-%m-%d")
-  echo date
+  echo "Today's date: ".date
+  execute "normal! i".date
 endfunction
 
   
