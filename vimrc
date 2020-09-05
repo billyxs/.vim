@@ -312,7 +312,7 @@ let themes = [
       \"turtles",
       \"twilight",
       \"vimterial_dark",
-      \"znake" ]
+      \"znake"]
 
 function! ChangeTheme()
   echom index(g:themes, g:colors_name).g:colors_name
