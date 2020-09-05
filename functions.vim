@@ -76,3 +76,21 @@ function! Lintts()
   let g:ale_fixers = { 'javascript': [ 'prettier', 'tslint' ] }
   echo "tslint with prettier"
 endfunction
+
+" Spell check
+" https://dev.to/coreyja/vim-spelling-suggestions-with-fzf-1ccc
+function! FzfSpellSing(word)
+  exe 'normal! "_ciw'.a:word
+endfunction
+function! FzfSpell()
+  let suggestions = spellsuggest(expand("<cword>"))
+  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10})
+endfunction
+
+" Today's date
+function! Date()
+  let date = strftime("%Y-%m-%d")
+  echo date
+endfunction
+
+  
