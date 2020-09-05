@@ -69,6 +69,9 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 Plug 'metakirby5/codi.vim'
 
+"External
+Plug 'benmills/vimux'
+
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'larsbs/vimterial_dark'
@@ -471,6 +474,20 @@ nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
 " Spell check with fzf
 nnoremap z= :call FzfSpell()<cr>
 
+" Format JSON
+nnoremap <leader>js :%!python -m json.tool
+
+" vimux commands - https://raw.githubusercontent.com/benmills/vimux/master/doc/vimux.txt
+nnoremap <leader>vp :VimuxPromptCommand<CR>
+nnoremap <leader>vl :call VimuxSendKeys("C-c")<CR>:VimuxRunLastCommand<CR>
+nnoremap <leader>vi :VimuxInspectRunner<CR>
+nnoremap <leader>vc :VimuxCloseRunner<CR>
+nnoremap <leader>vx :VimuxInterruptRunner<CR>
+nnoremap <leader>vz :VimuxZoomRunner<CR>
+nnoremap <leader>vd :call VimuxRunCommand("clear;ssh -A dev124-uswest1adevc;")<CR>:call VimuxRunCommand("pos")<CR>
+nnoremap <leader>vm :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;tox -e mypy;")<CR>
+nnoremap <leader>vt :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;make test;")<CR>
+
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
@@ -499,11 +516,12 @@ iabbrev bg@ billy.montgomery@gmail.com
 """"""""""""""""""""""""""""""""""""""""
 "   => Scripts
 """"""""""""""""""""""""""""""""""""""""
-" Javascript
 
 command! RFile call RemoveFile()
 
 command! E Explore
+
+command! Date call InsertDate()
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers
