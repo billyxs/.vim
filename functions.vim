@@ -95,10 +95,50 @@ function! FzfSpell()
 endfunction
 
 " Today's date
-function! InsertDate()
+function! Date()
   let date = strftime("%Y-%m-%d")
   echo "Today's date: ".date
   execute "normal! i".date
 endfunction
 
-  
+" Current time
+function! CurrentTime()
+  let time = strftime("%H:%M")
+  echo "Today's time: ".time
+  execute "normal! i".time
+endfunction
+
+" Calcluate work syntax 
+function! CalculateWorkTime()
+  " Get visual selection
+  let expression = @g
+  let rows = split(expression, '\n')
+
+  let l:start_hours = 0 
+  let l:start_mins = 0
+  let l:total_time = 0
+
+  for line in rows
+    let items = split(line, ':')
+    if items[0] =~ "start"
+      let l:start_hours = str2nr(Strip(items[1]))
+      let l:start_mins = str2nr(Strip(items[2]))
+    else
+      let hours = (str2nr(Strip(items[1]))-l:start_hours)*60
+      let end_minutes = str2nr(Strip(items[2]))
+      let l:total_time = l:total_time+hours+end_minutes-l:start_mins
+    endif
+  endfor
+
+  let total_hours = l:total_time/60
+  let total_minutes = l:total_time%60
+
+  let result = total_hours."h ".total_minutes."m"
+
+  execute "normal! OTotal: ".result
+endfunction
+
+function! DayHeader()
+  let header = strftime("# %Y-%m-%d - %A")
+  execute "normal! i".header
+endfunction

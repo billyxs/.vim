@@ -490,6 +490,12 @@ nnoremap <leader>vd :call VimuxRunCommand("clear;ssh -A dev124-uswest1adevc;")<C
 nnoremap <leader>vm :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;tox -e mypy;")<CR>
 nnoremap <leader>vt :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;make test;")<CR>
 
+" Work time tracking
+nnoremap <leader>wh :call DayHeader()<cr>
+nnoremap <leader>st istart:<space><esc>:call CurrentTime()<cr>
+nnoremap <leader>et iend:<space><esc>:call CurrentTime()<cr>
+vnoremap <leader>ct "gy:call CalculateWorkTime()<cr>
+
 " Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
@@ -536,8 +542,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Javascript
 augroup filetype_javascript
   autocmd!
-  autocmd FileType javascript nnoremap <leader>log :call EasyConsoleLog(0)<CR>
-  autocmd FileType javascript vnoremap <leader>log "gy:call EasyConsoleLog(1)<CR>
+  autocmd FileType javascript nnoremap <leader>log :call JavascriptConsoleLog(0)<CR>
+  autocmd FileType javascript vnoremap <leader>log "gy:call JavascriptConsoleLog(1)<CR>
 
   command! Lintjs call Lintjs()
   command! Lintjsp call Lintjsp()
@@ -567,8 +573,8 @@ augroup END
 " Python
 augroup filetype_python
   autocmd!
-  autocmd FileType python nnoremap <leader>log :call PythonLog(0)<CR>
-  autocmd FileType python vnoremap <leader>log "gy:call PythonLog(1)<CR>
+  autocmd FileType python nnoremap <leader>log :call PythonPrint(0)<CR>
+  autocmd FileType python vnoremap <leader>log "gy:call PythonPrint(1)<CR>
 augroup END
 
 source ~/.vim/functions.vim
