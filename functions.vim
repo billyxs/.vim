@@ -6,6 +6,7 @@ endfunction
 " Log
 function! LogIt(command, isVisual)
   if (a:isVisual)
+    " Get register g
     let expression = @g
     let message = ""
   else 
@@ -20,31 +21,32 @@ function! LogIt(command, isVisual)
   endif
 endfunction
 
-function! EasyConsoleLog(isVisual)
+function! JavascriptConsoleLog(isVisual)
   call LogIt('console.log', a:isVisual)
 endfunction
 
-function! PythonLog(isVisual)
+function! PythonPrint(isVisual)
   call LogIt('print', a:isVisual)
 endfunction
 
 " Copy current buffer path to multiple buffers
 " Author - Calvin Cieslak 
 function! CopyPath() 
-  execute "let @*=expand('%:p')"
   execute "let @+=expand('%:p')"
 endfunction
+
 
 " Copy current buffer path directory to multiple buffers
 " Author - Calvin Cieslak 
 function! CopyPathDir() 
-  execute "let @*=expand('%:p:h')"
   execute "let @+=expand('%:p:h')"
 endfunction
+
 
 function! MarkDownLink()
   execute "normal! o- [](".@*.")\<esc>T["
 endfunction
+
 
 " Remove File
 function! RemoveFile()
