@@ -511,19 +511,17 @@ set viminfo^=%
 "   => Abbreviations
 """"""""""""""""""""""""""""""""""""""""
 
-" Email addresses
-iabbrev bg@ billy.montgomery@gmail.com
 
 
 """"""""""""""""""""""""""""""""""""""""
-"   => Scripts
+"   => Ex shortcuts / Scripts
 """"""""""""""""""""""""""""""""""""""""
 
 command! RFile call RemoveFile()
 
 command! E Explore
 
-command! Date call InsertDate()
+command! Date call Date()
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers
