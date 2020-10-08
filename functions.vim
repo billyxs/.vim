@@ -1,8 +1,6 @@
-" Utils
-function! Strip(input_string)
-    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
-endfunction
-
+""""""""""""""""""""""""""""""""""""""""""""""
+" Logging
+""""""""""""""""""""""""""""""""""""""""""""""
 " Log
 function! LogIt(command, isVisual)
   if (a:isVisual)
@@ -29,24 +27,15 @@ function! PythonPrint(isVisual)
   call LogIt('print', a:isVisual)
 endfunction
 
-" Copy current buffer path to multiple buffers
-" Author - Calvin Cieslak 
-function! CopyPath() 
-  execute "let @+=expand('%:p')"
-endfunction
-
-
-" Copy current buffer path directory to multiple buffers
-" Author - Calvin Cieslak 
-function! CopyPathDir() 
-  execute "let @+=expand('%:p:h')"
-endfunction
-
 
 function! MarkDownLink()
   execute "normal! o- [](".@*.")\<esc>T["
 endfunction
 
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" File management
+""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remove File
 function! RemoveFile()
@@ -68,6 +57,9 @@ function! RemoveFile()
   return 2
 endfunction
 
+""""""""""""""""""""""""""""""""""""""""""""""
+" Code management
+""""""""""""""""""""""""""""""""""""""""""""""
 " toggleLint
 function! Lintjs() 
   let g:ale_fixers = { 'javascript': [ 'eslint' ] }
@@ -84,15 +76,10 @@ function! Lintts()
   echo "tslint with prettier"
 endfunction
 
-" Spell check
-" https://dev.to/coreyja/vim-spelling-suggestions-with-fzf-1ccc
-function! FzfSpellSing(word)
-  exe 'normal! "_ciw'.a:word
-endfunction
-function! FzfSpell()
-  let suggestions = spellsuggest(expand("<cword>"))
-  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10})
-endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Date/Time
+""""""""""""""""""""""""""""""""""""""""""""""
 
 " Today's date
 function! Date()
@@ -108,6 +95,9 @@ function! CurrentTime()
   execute "normal! i".time
 endfunction
 
+""""""""""""""""""""""""""""""""""""""""""""""
+" Process/Habit management
+""""""""""""""""""""""""""""""""""""""""""""""
 " Calcluate work syntax 
 function! CalculateWorkTime()
   " Get visual selection
@@ -141,4 +131,34 @@ endfunction
 function! DayHeader()
   let header = strftime("# %Y-%m-%d - %A")
   execute "normal! i".header
+endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Utilities
+""""""""""""""""""""""""""""""""""""""""""""""
+function! Strip(input_string)
+    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
+" Copy current buffer path to multiple buffers
+" Author - Calvin Cieslak 
+function! CopyPath()
+  execute "let @+=expand('%:p')"
+endfunction
+
+" Copy current buffer path directory to multiple buffers
+" Author - Calvin Cieslak
+function! CopyPathDir()
+  execute "let @+=expand('%:p:h')"
+endfunction
+
+" Spell check
+" https://dev.to/coreyja/vim-spelling-suggestions-with-fzf-1ccc
+function! FzfSpellSing(word)
+  exe 'normal! "_ciw'.a:word
+endfunction
+function! FzfSpell()
+  let suggestions = spellsuggest(expand("<cword>"))
+  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10})
 endfunction
