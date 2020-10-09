@@ -137,7 +137,7 @@ function! CalculateWorkTime()
 
     let result = total_hours."h ".total_minutes."m"
 
-    execute "normal! OTotal: ".result
+    execute "normal! OTotal: ".result."\n"
   endif
 endfunction
 
