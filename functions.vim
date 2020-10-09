@@ -1,3 +1,5 @@
+
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Logging
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -95,6 +97,7 @@ function! CurrentTime()
   execute "normal! i".time
 endfunction
 
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " Process/Habit management
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -107,25 +110,35 @@ function! CalculateWorkTime()
   let l:start_hours = 0 
   let l:start_mins = 0
   let l:total_time = 0
+  let error = 0
 
   for line in rows
     let items = split(line, ':')
-    if items[0] =~ "start"
-      let l:start_hours = str2nr(Strip(items[1]))
-      let l:start_mins = str2nr(Strip(items[2]))
+    if len(items) < 3
+      let error = 1
+      break
     else
-      let hours = (str2nr(Strip(items[1]))-l:start_hours)*60
-      let end_minutes = str2nr(Strip(items[2]))
-      let l:total_time = l:total_time+hours+end_minutes-l:start_mins
+      if items[0] =~ "start"
+        let l:start_hours = str2nr(Strip(items[1]))
+        let l:start_mins = str2nr(Strip(items[2]))
+      elseif items[2]
+        let hours = (str2nr(Strip(items[1]))-l:start_hours)*60
+        let end_minutes = str2nr(Strip(items[2]))
+        let l:total_time = l:total_time+hours+end_minutes-l:start_mins
+      endif
     endif
   endfor
 
-  let total_hours = l:total_time/60
-  let total_minutes = l:total_time%60
+  if error == 1
+    echo "Time not formatted correctly"
+  else
+    let total_hours = l:total_time/60
+    let total_minutes = l:total_time%60
 
-  let result = total_hours."h ".total_minutes."m"
+    let result = total_hours."h ".total_minutes."m"
 
-  execute "normal! OTotal: ".result
+    execute "normal! OTotal: ".result
+  endif
 endfunction
 
 function! DayHeader()
