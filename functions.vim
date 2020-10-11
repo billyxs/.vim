@@ -47,14 +47,14 @@ function! InlineArguments()
   let l:index = 0
 
   for line in lines
-    let arg = Trim(line)
+    let arg = trim(line)
     let arg = substitute(Trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
     echo arg
 
-    " Strip white space and add to output arg list
+    " Trim white space and add to output arg list
     let l:arg_list[l:index] = arg
     let l:index = l:index + 1
   endfor
@@ -74,13 +74,12 @@ function! LinedArguments()
 
   let l:output = ""
   for arg in l:arg_list
-    let arg = substitute(Trim(arg), ',', '', '')
-    let arg = substitute(arg, "\n", '', '')
+    let arg = substitute(trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
 
-    let l:output .= "\t".Strip(arg).",\n"
+    let l:output .= "\t".arg.",\n"
   endfor
 
   let l:output = "(\n".l:output.")"
@@ -164,7 +163,7 @@ function! CalculateWeekWorkTime()
   for line in lines
     if line =~ "Total"
       let time = split(line, ' ')
-      let add_minutes = str2nr(Strip(time[1]))*60
+      let add_minutes = str2nr(trim(time[1]))*60
       let l:minutes += add_minutes + str2nr(time[2])
     endif
   endfor
@@ -195,11 +194,11 @@ function! CalculateWorkTime()
       break
     else
       if items[0] =~ "start"
-        let l:start_hours = str2nr(Strip(items[1]))
-        let l:start_mins = str2nr(Strip(items[2]))
+        let l:start_hours = str2nr(trim(items[1]))
+        let l:start_mins = str2nr(trim(items[2]))
       elseif items[2]
-        let hours = (str2nr(Strip(items[1]))-l:start_hours)*60
-        let end_minutes = str2nr(Strip(items[2]))
+        let hours = (str2nr(trim(items[1]))-l:start_hours)*60
+        let end_minutes = str2nr(trim(items[2]))
         let l:total_time += hours+end_minutes-l:start_mins
       endif
     endif
@@ -226,14 +225,6 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""
 " Vim script utilities
 """"""""""""""""""""""""""""""""""""""""""""""
-function! Strip(input_string)
-    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
-endfunction
-
-function! Trim(input_string)
-    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
-endfunction
-
 
 " Copy current buffer path to multiple buffers
 " Author - Calvin Cieslak 
