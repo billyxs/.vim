@@ -101,7 +101,30 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""
 " Process/Habit management
 """"""""""""""""""""""""""""""""""""""""""""""
-" Calcluate work syntax 
+" Calculate week work time
+function! CalculateWeekWorkTime()
+  execute 'normal! mmggVG"gy`m'
+  let all_text = @g
+  let lines = split(all_text, '\n')
+
+  let l:minutes = 0
+  for line in lines
+    if line =~ "Total"
+      let time = split(line, ' ')
+      let add_minutes = str2nr(Strip(time[1]))*60
+      let l:minutes += add_minutes + str2nr(time[2])
+    endif
+  endfor
+
+  let total_hours = l:minutes/60
+  let total_minutes = l:minutes%60
+
+  let result = total_hours."h ".total_minutes."m"
+
+  execute "normal! 2GOWeek Total: ".result."\n"
+endfunction
+
+" Calcluate work time syntax 
 function! CalculateWorkTime()
   " Get visual selection
   let expression = @g
@@ -124,7 +147,7 @@ function! CalculateWorkTime()
       elseif items[2]
         let hours = (str2nr(Strip(items[1]))-l:start_hours)*60
         let end_minutes = str2nr(Strip(items[2]))
-        let l:total_time = l:total_time+hours+end_minutes-l:start_mins
+        let l:total_time += hours+end_minutes-l:start_mins
       endif
     endif
   endfor
