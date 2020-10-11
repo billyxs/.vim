@@ -311,6 +311,8 @@ colorscheme palenight
 let themes = [
       \"ayu",
       \"dracula",
+      \"embark",
+      \"github",
       \"nord",
       \"OceanicNext",
       \"one",
