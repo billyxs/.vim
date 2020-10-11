@@ -492,8 +492,8 @@ nnoremap <leader>vt :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;make t
 
 " Work time tracking
 nnoremap <leader>wh :call DayHeader()<cr>
-nnoremap <leader>st istart:<space><esc>:call CurrentTime()<cr>
-nnoremap <leader>et iend:<space><esc>:call CurrentTime()<cr>
+nnoremap <leader>st istart:<space><space><esc>:call CurrentTime()<cr>
+nnoremap <leader>et iend:<space><space><esc>:call CurrentTime()<cr>
 vnoremap <leader>ct "gy:call CalculateWorkTime()<cr>
 
 " Specify the behavior when switching between buffers
