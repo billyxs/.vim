@@ -1,5 +1,3 @@
-
-
 """"""""""""""""""""""""""""""""""""""""""""""
 " Logging
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -32,6 +30,61 @@ endfunction
 
 function! MarkDownLink()
   execute "normal! o- [](".@*.")\<esc>T["
+endfunction
+
+
+function! InlineArguments()
+  " Copy the args list to 'z' register
+  execute 'normal! vi("zy'
+
+  " Create list splitting by newline
+  let lines = split(@z, '\n')
+
+  " Create a new arg list for output
+  let l:arg_list = map(range(len(lines)), 0)
+
+  " Track the index
+  let l:index = 0
+
+  for line in lines
+    let arg = Trim(line)
+    let arg = substitute(Trim(arg), ',', '', '')
+    if len(arg) < 1
+      continue
+    endif
+    echo arg
+
+    " Strip white space and add to output arg list
+    let l:arg_list[l:index] = arg
+    let l:index = l:index + 1
+  endfor
+
+  " Deleate the argument list and build an inline one
+  " by joining the new arg list
+  execute 'normal! va(di('.join(l:arg_list, ', ').')'
+endfunction
+
+
+function! LinedArguments()
+  " Copy the args list to 'z' register
+  execute 'normal! vi("zy'
+
+  " Create list of args splitting on comma
+  let l:arg_list = split(@z, ',')
+
+  let l:output = ""
+  for arg in l:arg_list
+    let arg = substitute(Trim(arg), ',', '', '')
+    let arg = substitute(arg, "\n", '', '')
+    if len(arg) < 1
+      continue
+    endif
+
+    let l:output .= "\t".Strip(arg).",\n"
+  endfor
+
+  let l:output = "(\n".l:output.")"
+  execute "normal! va(di".output
 endfunction
 
 
@@ -171,11 +224,16 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
-" Utilities
+" Vim script utilities
 """"""""""""""""""""""""""""""""""""""""""""""
 function! Strip(input_string)
     return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
+
+function! Trim(input_string)
+    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
 
 " Copy current buffer path to multiple buffers
 " Author - Calvin Cieslak 
