@@ -473,6 +473,8 @@ noremap cp yap<S-}>p
 " Snippet like mappings
 " Describe block
 nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+nnoremap <leader>log :call LogIt(0)<CR>
+vnoremap <leader>log "zy:call LogIt(1)<CR>
 
 " It block
 nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
@@ -546,8 +548,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Javascript
 augroup filetype_javascript
   autocmd!
-  autocmd FileType javascript nnoremap <leader>log :call JavascriptConsoleLog(0)<CR>
-  autocmd FileType javascript vnoremap <leader>log "gy:call JavascriptConsoleLog(1)<CR>
 
   command! Lintjs call Lintjs()
   command! Lintjsp call Lintjsp()
@@ -572,13 +572,6 @@ augroup filetype_markdown
   nnoremap <leader>li :call MarkDownLink()<CR>
 
   autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
-augroup END
-
-" Python
-augroup filetype_python
-  autocmd!
-  autocmd FileType python nnoremap <leader>log :call PythonPrint(0)<CR>
-  autocmd FileType python vnoremap <leader>log "gy:call PythonPrint(1)<CR>
 augroup END
 
 source ~/.vim/functions.vim
