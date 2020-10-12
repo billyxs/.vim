@@ -87,6 +87,59 @@ function! LinedArguments()
 endfunction
 
 
+function! InlineKeyValues()
+  " Copy the args list to 'z' register
+  execute 'normal! vi{"zy'
+
+  " Create list splitting by newline
+  let lines = split(@z, '\n')
+
+  " Create a new arg list for output
+  let l:arg_list = map(range(len(lines)), 0)
+
+  " Track the index
+  let l:index = 0
+
+  for line in lines
+    let arg = trim(line)
+    let arg = substitute(Trim(arg), ',', '', '')
+    if len(arg) < 1
+      continue
+    endif
+
+    " Trim white space and add to output arg list
+    let l:arg_list[l:index] = arg
+    let l:index = l:index + 1
+  endfor
+
+  " Deleate the argument list and build an inline one
+  " by joining the new arg list
+  execute 'normal! va{di { '.join(l:arg_list, ', ').' }'
+endfunction
+
+
+function! LinedKeyValues()
+  " Copy the args list to 'z' register
+  execute 'normal! vi{"zy'
+
+  " Create list of args splitting on comma
+  let l:arg_list = split(@z, ',')
+
+  let l:output = ""
+  for arg in l:arg_list
+    let arg = substitute(trim(arg), ',', '', '')
+    if len(arg) < 1
+      continue
+    endif
+
+    let l:output .= "\t".arg.",\n"
+  endfor
+
+  let l:output = "{\n".l:output."}"
+  execute "normal! va{di ".output
+endfunction
+
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " File management
 """"""""""""""""""""""""""""""""""""""""""""""
