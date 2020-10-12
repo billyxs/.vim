@@ -2,29 +2,32 @@
 " Logging
 """"""""""""""""""""""""""""""""""""""""""""""
 " Log
-function! LogIt(command, isVisual)
+function! LogIt(isVisual)
+  let l:filetype = &filetype
+  let l:message = ""
+
   if (a:isVisual)
-    " Get register g
-    let expression = @g
-    let message = ""
+    " Get register z
+    let l:expression = @z
+    let l:message = ""
   else 
-    let expression = expand("<cword>")
-    let message = expression
+    let l:expression = expand("<cword>")
+    let l:message = expression
   endif
   
-  execute "normal! o".a:command."('".message." = ', ".expression.")"
+  if l:filetype == 'vim'
+    execute "normal! oecho ".l:message 
+  elseif l:filetype == 'python'
+    execute "normal! oprint('".l:message." = ', ".l:expression.")"
+  elseif l:filetype == 'javascript'
+    execute "normal! oconsole.log('".l:message." = ', ".l:expression.")"
+  else
+    echo "LogIt not setup for filetype: ".l:filetype
+  endif
 
   if (a:isVisual)
     execute "normal! ^f'"
   endif
-endfunction
-
-function! JavascriptConsoleLog(isVisual)
-  call LogIt('console.log', a:isVisual)
-endfunction
-
-function! PythonPrint(isVisual)
-  call LogIt('print', a:isVisual)
 endfunction
 
 
