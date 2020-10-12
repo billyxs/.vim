@@ -2,39 +2,91 @@
 " Logging
 """"""""""""""""""""""""""""""""""""""""""""""
 " Log
-function! LogIt(isVisual)
+function! LogIt(isVisual) abort
+  " Get the current filetype we are in
   let l:filetype = &filetype
+
   let l:message = ""
 
+  " Is this a visual selection or not?
   if (a:isVisual)
     " Get register z
     let l:expression = @z
     let l:message = ""
   else 
+    " get current word under cursor
+    " this is typically a variable we want to log
     let l:expression = expand("<cword>")
     let l:message = expression
   endif
   
   if l:filetype == 'vim'
+    " output - echo expression
     execute "normal! oecho ".l:message 
   elseif l:filetype == 'python'
+    " output - print('variable = ', variable)
     execute "normal! oprint('".l:message." = ', ".l:expression.")"
   elseif l:filetype == 'javascript'
+    " output - console.log('variable = ', variable)
     execute "normal! oconsole.log('".l:message." = ', ".l:expression.")"
   else
+    " If the file is not supported, give the message
     echo "LogIt not setup for filetype: ".l:filetype
   endif
 
+  " If this is a visual selection scenario
+  " Go to beginning of line and find first single quote
   if (a:isVisual)
     execute "normal! ^f'"
   endif
 endfunction
 
 
-function! MarkDownLink()
-  execute "normal! o- [](".@*.")\<esc>T["
+""""""""""""""""""""""""""""""""""""""""""""""
+" File management
+""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remove File
+function! RemoveFile()
+  echo 'buf -' .bufname('#:p')
+  let result = confirm("Are you sure?", "&Yes\n&No\n")
+  if (result ==# 1)
+    echom "Deleting " . bufname("%") . "..."
+    let theFile = expand('%:p')
+    let dit = delete(theFile)
+    if (dit)
+      echo "Deleted " . theFile
+    else
+      echohl "Failed to delete " . theFile
+    endif
+
+    execute "e#"
+    return 1
+  endif
+  return 2
 endfunction
 
+""""""""""""""""""""""""""""""""""""""""""""""
+" Code management
+""""""""""""""""""""""""""""""""""""""""""""""
+" toggleLint
+function! Lintjs()
+  let g:ale_fixers = { 'javascript': [ 'eslint' ] }
+  echo "eslint"
+endfunction
+
+function! Lintjsp()
+  let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint' ] }
+  echo "eslint with prettier"
+endfunction
+
+function! Lintts()
+  let g:ale_fixers = { 'javascript': [ 'prettier', 'tslint' ] }
+  echo "tslint with prettier"
+endfunction
+
+
+" Argument/Dictionary formatters
 
 function! InlineArguments()
   " Copy the args list to 'z' register
@@ -144,50 +196,6 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
-" File management
-""""""""""""""""""""""""""""""""""""""""""""""
-
-" Remove File
-function! RemoveFile()
-  echo 'buf -' .bufname('#:p')
-  let result = confirm("Are you sure?", "&Yes\n&No\n")
-  if (result ==# 1)
-    echom "Deleting " . bufname("%") . "..."
-    let theFile = expand('%:p')
-    let dit = delete(theFile)
-    if (dit)
-      echo "Deleted " . theFile
-    else
-      echohl "Failed to delete " . theFile
-    endif
-
-    execute "e#"
-    return 1
-  endif
-  return 2
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""
-" Code management
-""""""""""""""""""""""""""""""""""""""""""""""
-" toggleLint
-function! Lintjs() 
-  let g:ale_fixers = { 'javascript': [ 'eslint' ] }
-  echo "eslint"
-endfunction
-
-function! Lintjsp() 
-  let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint' ] }
-  echo "eslint with prettier"
-endfunction
-
-function! Lintts() 
-  let g:ale_fixers = { 'javascript': [ 'prettier', 'tslint' ] }
-  echo "tslint with prettier"
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""
 " Date/Time
 """"""""""""""""""""""""""""""""""""""""""""""
 
@@ -209,6 +217,13 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""
 " Process/Habit management
 """"""""""""""""""""""""""""""""""""""""""""""
+
+" Add link syntax for url in clipboard
+function! MarkDownLink()
+  execute "normal! o- [](".@*.")\<esc>T["
+endfunction
+,
+
 " Calculate week work time
 function! CalculateWeekWorkTime()
   execute 'normal! mmggVG"gy`m'
