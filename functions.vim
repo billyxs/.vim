@@ -102,14 +102,14 @@ function! InlineArguments()
   let l:index = 0
 
   for line in lines
+    " Trim white space and add to output arg list
     let arg = trim(line)
-    let arg = substitute(Trim(arg), ',', '', '')
+    let arg = substitute(trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
     echo arg
 
-    " Trim white space and add to output arg list
     let l:arg_list[l:index] = arg
     let l:index = l:index + 1
   endfor
@@ -156,13 +156,13 @@ function! InlineKeyValues()
   let l:index = 0
 
   for line in lines
+    " Trim white space and add to output arg list
     let arg = trim(line)
-    let arg = substitute(Trim(arg), ',', '', '')
+    let arg = substitute(trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
 
-    " Trim white space and add to output arg list
     let l:arg_list[l:index] = arg
     let l:index = l:index + 1
   endfor
