@@ -497,7 +497,7 @@ nnoremap <leader>vm :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;tox -e
 nnoremap <leader>vt :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;make test;")<CR>
 
 " Work time tracking
-nnoremap <leader>wh :call DayHeader()<cr>
+nnoremap <leader>dh :call DayHeader()<cr>
 nnoremap <leader>st istart:<space><space><esc>:call CurrentTime()<cr>
 nnoremap <leader>et iend:<space><space><esc>:call CurrentTime()<cr>
 vnoremap <leader>ct "gy:call CalculateWorkTime()<cr>
