@@ -103,8 +103,8 @@ function! InlineArguments()
 
   for line in lines
     " Trim white space and add to output arg list
-    let arg = trim(line)
-    let arg = substitute(trim(arg), ',', '', '')
+    let arg = Trim(line)
+    let arg = substitute(Trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
@@ -129,7 +129,7 @@ function! LinedArguments()
 
   let l:output = ""
   for arg in l:arg_list
-    let arg = substitute(trim(arg), ',', '', '')
+    let arg = substitute(Trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
@@ -157,8 +157,8 @@ function! InlineKeyValues()
 
   for line in lines
     " Trim white space and add to output arg list
-    let arg = trim(line)
-    let arg = substitute(trim(arg), ',', '', '')
+    let arg = Trim(line)
+    let arg = substitute(Trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
@@ -182,7 +182,7 @@ function! LinedKeyValues()
 
   let l:output = ""
   for arg in l:arg_list
-    let arg = substitute(trim(arg), ',', '', '')
+    let arg = substitute(Trim(arg), ',', '', '')
     if len(arg) < 1
       continue
     endif
@@ -234,7 +234,7 @@ function! CalculateWeekWorkTime()
   for line in lines
     if line =~ "Total"
       let time = split(line, ' ')
-      let add_minutes = str2nr(trim(time[1]))*60
+      let add_minutes = str2nr(Trim(time[1]))*60
       let l:minutes += add_minutes + str2nr(time[2])
     endif
   endfor
@@ -265,11 +265,11 @@ function! CalculateWorkTime()
       break
     else
       if items[0] =~ "start"
-        let l:start_hours = str2nr(trim(items[1]))
-        let l:start_mins = str2nr(trim(items[2]))
+        let l:start_hours = str2nr(Trim(items[1]))
+        let l:start_mins = str2nr(Trim(items[2]))
       elseif items[2]
-        let hours = (str2nr(trim(items[1]))-l:start_hours)*60
-        let end_minutes = str2nr(trim(items[2]))
+        let hours = (str2nr(Trim(items[1]))-l:start_hours)*60
+        let end_minutes = str2nr(Trim(items[2]))
         let l:total_time += hours+end_minutes-l:start_mins
       endif
     endif
@@ -317,4 +317,8 @@ endfunction
 function! FzfSpell()
   let suggestions = spellsuggest(expand("<cword>"))
   return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10})
+endfunction
+
+function! Trim(word) abort
+  return substitute(a:word, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
