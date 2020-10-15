@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""
 " Logging
 """"""""""""""""""""""""""""""""""""""""""""""
-" Log
+
 function! LogIt(isVisual) abort
   " Get the current filetype we are in
   let l:filetype = &filetype
@@ -35,7 +35,7 @@ function! LogIt(isVisual) abort
   endif
 
   " If this is a visual selection scenario
-  " Go to beginning of line and find first single quote
+  " Go to beginning of log line and find first single quote
   if (a:isVisual)
     execute "normal! ^f'"
   endif
@@ -267,7 +267,7 @@ function! CalculateWorkTime()
       if items[0] =~ "start"
         let l:start_hours = str2nr(Trim(items[1]))
         let l:start_mins = str2nr(Trim(items[2]))
-      elseif items[2]
+      elseif items[0] =~ "end"
         let hours = (str2nr(Trim(items[1]))-l:start_hours)*60
         let end_minutes = str2nr(Trim(items[2]))
         let l:total_time += hours+end_minutes-l:start_mins
