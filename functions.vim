@@ -20,9 +20,12 @@ function! LogIt(isVisual) abort
     let l:message = expression
   endif
   
-  if l:filetype == 'vim' || l:filetype == 'sh'
+  if l:filetype == 'vim'
     " output - echo expression
-    execute "normal! oecho ".l:message 
+    execute "normal! oecho ".l:message
+  elseif l:filetype == 'sh'
+    " output - echo expression
+    execute "normal! oecho $".l:message
   elseif l:filetype == 'python'
     " output - print('variable = ', variable)
     execute "normal! oprint('".l:message." = ', ".l:expression.")"
