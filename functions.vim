@@ -20,7 +20,7 @@ function! LogIt(isVisual) abort
     let l:message = expression
   endif
   
-  if l:filetype == 'vim'
+  if l:filetype == 'vim' || l:filetype == 'sh'
     " output - echo expression
     execute "normal! oecho ".l:message 
   elseif l:filetype == 'python'
