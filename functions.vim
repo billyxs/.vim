@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""
-" Logging
+" Logging by filetype
 """"""""""""""""""""""""""""""""""""""""""""""
 
 function! LogIt(isVisual) abort
@@ -210,7 +210,7 @@ function! Date()
 endfunction
 
 " Current time
-function! CurrentTime()
+function! Time()
   let time = strftime("%H:%M")
   echo "Today's time: ".time
   execute "normal! i".time
@@ -322,6 +322,7 @@ function! FzfSpell()
   return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10})
 endfunction
 
+" Support trimming for older versions of Vim
 function! Trim(word) abort
   return substitute(a:word, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
