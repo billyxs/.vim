@@ -247,7 +247,7 @@ function! CalculateWeekWorkTime()
 
   let result = total_hours."h ".total_minutes."m"
 
-  execute "normal! 2GOWeek Total: ".result."\n"
+  execute "normal! 2GO\nWeek Total: ".result."\n"
 endfunction
 
 " Calcluate work time syntax 
