@@ -111,7 +111,6 @@ function! InlineArguments()
     if len(arg) < 1
       continue
     endif
-    echo arg
 
     let l:arg_list[l:index] = arg
     let l:index = l:index + 1
@@ -225,9 +224,26 @@ endfunction
 function! MarkDownLink()
   execute "normal! o- [](".@*.")\<esc>T["
 endfunction
-,
+
+" Calculate time for prefixed lines with time formatting. eg: 8h 10m
+function! GetMinutesForLinesWithPrefix(lines, prefix, separator) abort
+  let l:minutes = 0
+  for line in a:lines
+    if line =~ a:prefix
+      let time = split(line, a:separator)
+      # calculate minutes from hours
+      let add_minutes = str2nr(Trim(time[1]))*60
+      # add minutes and hours
+      let l:minutes += add_minutes + str2nr(Trim(time[2]))
+    endif
+  endfor
+
+  return l:minutes
+endfunction
+
 
 " Calculate week work time
+" Time formatting must follow example: 8h 10m
 function! CalculateWeekWorkTime()
   execute 'normal! mmggVG"gy`m'
   let all_text = @g
@@ -247,7 +263,57 @@ function! CalculateWeekWorkTime()
 
   let result = total_hours."h ".total_minutes."m"
 
-  execute "normal! 2GO\nWeek Total: ".result."\n"
+  execute "normal! 2GO\nWeek Total: ".result
+endfunction
+
+
+" Calculate time off for sick/pto
+function! CalculateTimeOff(type)
+  execute 'normal! mmggVG"gy`m'
+  let all_text = @g
+  let lines = split(all_text, '\n')
+
+  let l:time_off = 0
+  for line in lines
+    if line =~ "ooo:"
+      let items = split(line, ' ')
+      let value = Trim(items[1])
+      if value == a:type
+        let l:time_off += 8*60
+      endif
+    endif
+  endfor
+
+  return l:time_off
+endfunction
+
+
+function! CalculateWeekTimeOff()
+  execute 'normal! mmggVG"gy`m'
+  let all_text = @g
+  let lines = split(all_text, '\n')
+
+  let l:sick_time = CalculateTimeOff("sick")
+  let l:pto_time = CalculateTimeOff("pto")
+  let l:output = ""
+
+  if l:sick_time > 0
+    let sick_hours = l:sick_time/60
+    let sick_minutes = l:sick_time%60
+    let l:output = l:output."\nSick: ".sick_hours."h ".sick_minutes."m"
+  endif
+
+  if l:pto_time > 0
+    let pto_hours = l:pto_time/60
+    let pto_minutes = l:pto_time%60
+    let l:output = l:output."\nPTO: ".pto_hours."h ".pto_minutes."m"
+  endif
+
+  if len(l:output) > 0
+    execute "normal! 2GO\nWeek Time Off".l:output
+  else
+    echo "No time off" 
+  endif
 endfunction
 
 " Calcluate work time syntax 
@@ -256,7 +322,7 @@ function! CalculateWorkTime()
   let expression = @g
   let rows = split(expression, '\n')
 
-  let l:start_hours = 0 
+  let l:start_hours = 0
   let l:start_mins = 0
   let l:total_time = 0
   let error = 0
@@ -295,6 +361,11 @@ function! DayHeader()
   execute "normal! i".header
 endfunction
 
+" Output week time summary
+function! CalculateWeekSummary()
+  call CalculateWeekTimeOff()
+  call CalculateWeekWorkTime()
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Vim script utilities
