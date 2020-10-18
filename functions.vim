@@ -57,9 +57,13 @@ function! ForInList(visualSelection)
     " Get register z
     let l:list = Trim(@z)
   else
-    " get current word under cursor
-    " this is typically a variable we want to log
-    let l:list = Trim(expand("<cword>"))
+    " Get word under cursor for iterating over
+    let l:word = Trim(expand("<cword>"))
+
+    " If word is provided, use it
+    if len(l:word) > 0
+      let l:list = l:word
+    endif
   endif
 
   if l:list[-1:] == "s"
@@ -80,7 +84,7 @@ endfunction
 
 
 " For in syntax builder
-function! ForInKeyValue(visualSelection)
+function! ForInKeyValue(visualSelection) abort
   " Get the current filetype we are in
   let l:filetype = &filetype
 
@@ -90,7 +94,7 @@ function! ForInKeyValue(visualSelection)
   if (a:visualSelection)
     " Get register z
     let l:list = Trim(@z)
-  else 
+  else
     " get current word under cursor
     " this is typically a variable we want to log
     let l:list = Trim(expand("<cword>"))
@@ -107,6 +111,37 @@ function! ForInKeyValue(visualSelection)
   " Go to item of iteration syntax
   execute "normal! o\t"
 endfunction
+
+
+" Import module
+function! Import() abort
+  " Create a mark at z
+  execute "normal! mz"
+
+  " Get the current filetype we are in
+  let l:filetype = &filetype
+
+  " Prompt from import questions
+  let l:import_item = input("Import what? ")
+  let l:import_package = input("From package? ")
+
+  if l:filetype == 'python'
+    if Trim(l:import_package) == ""
+      execute "normal! ggOimport ".l:import_item 
+    else
+      execute "normal! ggOfrom ".l:import_package." import ".l:import_item 
+    endif
+  elseif l:filetype == 'javascript'
+    execute "normal! ggOimport { ".l:import_item." } from ".l:import_package
+  else
+    " If the file is not supported, give the message
+    echo "Import not setup for filetype: ".l:filetype
+  endif
+
+  " Go go back to mark 
+  execute "normal! 'z"
+endfunction
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
