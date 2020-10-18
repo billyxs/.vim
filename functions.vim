@@ -56,13 +56,13 @@ function! ForInList(visualSelection)
   if (a:visualSelection)
     " Get register z
     let l:list = Trim(@z)
-  else 
+  else
     " get current word under cursor
     " this is typically a variable we want to log
     let l:list = Trim(expand("<cword>"))
   endif
 
-  if l:list[-1:] == "s" 
+  if l:list[-1:] == "s"
     let l:item = l:list[0:-2]
   endif
   
@@ -74,7 +74,7 @@ function! ForInList(visualSelection)
     echo "ForList not setup for filetype: ".l:filetype
   endif
 
-  " Go to item of iteration syntax 
+  " Go to item of iteration syntax
   execute "normal! ^f l"
 endfunction
 
@@ -104,7 +104,7 @@ function! ForInKeyValue(visualSelection)
     echo "ForInKeyValue not setup for filetype: ".l:filetype
   endif
 
-  " Go to item of iteration syntax 
+  " Go to item of iteration syntax
   execute "normal! o\t"
 endfunction
 
