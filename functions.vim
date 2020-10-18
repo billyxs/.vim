@@ -44,6 +44,70 @@ function! LogIt(isVisual) abort
   endif
 endfunction
 
+" For in syntax builder
+function! ForInList(visualSelection)
+  " Get the current filetype we are in
+  let l:filetype = &filetype
+
+  let l:list = "items"
+  let l:item = "item"
+
+  " Is this a visual selection or not?
+  if (a:visualSelection)
+    " Get register z
+    let l:list = Trim(@z)
+  else 
+    " get current word under cursor
+    " this is typically a variable we want to log
+    let l:list = Trim(expand("<cword>"))
+  endif
+
+  if l:list[-1:] == "s" 
+    let l:item = l:list[0:-2]
+  endif
+  
+  if l:filetype == 'python'
+    " output - print('variable = ', variable)
+    execute "normal! ofor ".l:item." in ".l:list.":"
+  else
+    " If the file is not supported, give the message
+    echo "ForList not setup for filetype: ".l:filetype
+  endif
+
+  " Go to item of iteration syntax 
+  execute "normal! ^f l"
+endfunction
+
+
+" For in syntax builder
+function! ForInKeyValue(visualSelection)
+  " Get the current filetype we are in
+  let l:filetype = &filetype
+
+  let l:list = "items"
+
+  " Is this a visual selection or not?
+  if (a:visualSelection)
+    " Get register z
+    let l:list = Trim(@z)
+  else 
+    " get current word under cursor
+    " this is typically a variable we want to log
+    let l:list = Trim(expand("<cword>"))
+  endif
+
+  if l:filetype == 'python'
+    " output - print('variable = ', variable)
+    execute "normal! ofor key, value in ".l:list.".items():"
+  else
+    " If the file is not supported, give the message
+    echo "ForInKeyValue not setup for filetype: ".l:filetype
+  endif
+
+  " Go to item of iteration syntax 
+  execute "normal! o\t"
+endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " File management

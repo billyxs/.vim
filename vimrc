@@ -473,8 +473,24 @@ noremap cp yap<S-}>p
 " Snippet like mappings
 " Describe block
 nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+
+" Log selection or what is under the cursor
 nnoremap <leader>log :call LogIt(0)<CR>
 vnoremap <leader>log "zy:call LogIt(1)<CR>
+
+" Create a for in loop for list/iterator of selection or word under cursor
+nnoremap <leader>for :call ForInList(0)<CR>
+vnoremap <leader>for "zy:call ForInList(1)<CR>
+nnoremap <leader>fil :call ForInList(0)<CR>
+vnoremap <leader>fil "zy:call ForInList(1)<CR>
+
+" Create a for in loop for dictionary of selection or word under cursor
+nnoremap <leader>fork :call ForInKeyValue(0)<CR>
+vnoremap <leader>fork "zy:call ForInKeyValue(1)<CR>
+nnoremap <leader>fik :call ForInKeyValue(0)<CR>
+vnoremap <leader>fik "zy:call ForInKeyValue(1)<CR>
+nnoremap <leader>fid :call ForInKeyValue(0)<CR>
+vnoremap <leader>fid "zy:call ForInKeyValue(1)<CR>
 
 " It block
 nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
@@ -572,6 +588,7 @@ augroup filetype_markdown
   nnoremap <leader>li :call MarkDownLink()<CR>
 
   autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
+  ab def def () ->:<esc>Ffa
 augroup END
 
 source ~/.vim/functions.vim
