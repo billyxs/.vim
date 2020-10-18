@@ -359,16 +359,9 @@ noremap <leader><leader>sv :source $MYVIMRC<cr>
 " SEARCH!
 nnoremap <leader>/ :%s/\V/gc<Left><Left><Left>
 
-function! SearchWord()
-  let word = expand("<cword>")
-  echo word
-  execute Rg<space>word
-endfunction
-
 " FZF/Rg search
 nnoremap <leader>a :Rg<space><CR>
 nnoremap <leader>f :Files<CR>
-" nnoremap <leader>w :call SearchWord()<CR>
 nnoremap <leader>bu :Buffers<CR>
 
 command! -bang -nargs=* Rg
@@ -378,7 +371,7 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-" Don't use arrows
+" Disable use of arrows
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
