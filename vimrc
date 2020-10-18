@@ -470,11 +470,35 @@ nnoremap <leader>fs <C-w>f
 " Copy paragraph
 noremap cp yap<S-}>p
 
+
+"""""""""""""""""""""""""""""""""""""
+" Coding snippets
+"""""""""""""""""""""""""""""""""""""
 " Snippet like mappings
 " Describe block
 nnoremap <leader>des odescribe(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
+
+" Log selection or what is under the cursor
 nnoremap <leader>log :call LogIt(0)<CR>
 vnoremap <leader>log "zy:call LogIt(1)<CR>
+
+" Create a for in loop for list/iterator of selection or word under cursor
+nnoremap <leader>for :call ForInList(0)<CR>
+vnoremap <leader>for "zy:call ForInList(1)<CR>
+nnoremap <leader>fil :call ForInList(0)<CR>
+vnoremap <leader>fil "zy:call ForInList(1)<CR>
+
+" Create a for in loop for dictionary of selection or word under cursor
+nnoremap <leader>fork :call ForInKeyValue(0)<CR>
+vnoremap <leader>fork "zy:call ForInKeyValue(1)<CR>
+nnoremap <leader>fik :call ForInKeyValue(0)<CR>
+vnoremap <leader>fik "zy:call ForInKeyValue(1)<CR>
+nnoremap <leader>fid :call ForInKeyValue(0)<CR>
+vnoremap <leader>fid "zy:call ForInKeyValue(1)<CR>
+
+" Import module
+nnoremap <leader>imp :call Import()<CR>
+
 
 " It block
 nnoremap <leader>it oit(''<ESC>mma, () => {<CR><CR>})<ESC>`mi
@@ -572,6 +596,14 @@ augroup filetype_markdown
   nnoremap <leader>li :call MarkDownLink()<CR>
 
   autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
+
+  " Abbreviations for python
+  ab def def() -> None:<esc>F(i
+  ab fix @fixture<esc>odef myfixture() -> Iterator:<esc>owith mock.patch("") as mock_object:<esc>oyield mock_object
+  ab import from import
+  ab typing from typing import<space>
+  ab typeddict class Item(TypedDict):
+  ab class class Name():<esc>F<space>
 augroup END
 
 source ~/.vim/functions.vim

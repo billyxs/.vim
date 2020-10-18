@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""
-" Logging
+" Logging by filetype
 """"""""""""""""""""""""""""""""""""""""""""""
 
 function! LogIt(isVisual) abort
@@ -42,6 +42,104 @@ function! LogIt(isVisual) abort
   if (a:isVisual)
     execute "normal! ^f'"
   endif
+endfunction
+
+" For in syntax builder
+function! ForInList(visualSelection)
+  " Get the current filetype we are in
+  let l:filetype = &filetype
+
+  let l:list = "items"
+  let l:item = "item"
+
+  " Is this a visual selection or not?
+  if (a:visualSelection)
+    " Get register z
+    let l:list = Trim(@z)
+  else
+    " Get word under cursor for iterating over
+    let l:word = Trim(expand("<cword>"))
+
+    " If word is provided, use it
+    if len(l:word) > 0
+      let l:list = l:word
+    endif
+  endif
+
+  if l:list[-1:] == "s"
+    let l:item = l:list[0:-2]
+  endif
+  
+  if l:filetype == 'python'
+    " output - print('variable = ', variable)
+    execute "normal! ofor ".l:item." in ".l:list.":"
+  else
+    " If the file is not supported, give the message
+    echo "ForList not setup for filetype: ".l:filetype
+  endif
+
+  " Go to item of iteration syntax
+  execute "normal! ^f l"
+endfunction
+
+
+" For in syntax builder
+function! ForInKeyValue(visualSelection) abort
+  " Get the current filetype we are in
+  let l:filetype = &filetype
+
+  let l:list = "items"
+
+  " Is this a visual selection or not?
+  if (a:visualSelection)
+    " Get register z
+    let l:list = Trim(@z)
+  else
+    " get current word under cursor
+    " this is typically a variable we want to log
+    let l:list = Trim(expand("<cword>"))
+  endif
+
+  if l:filetype == 'python'
+    " output - print('variable = ', variable)
+    execute "normal! ofor key, value in ".l:list.".items():"
+  else
+    " If the file is not supported, give the message
+    echo "ForInKeyValue not setup for filetype: ".l:filetype
+  endif
+
+  " Go to item of iteration syntax
+  execute "normal! o\t"
+endfunction
+
+
+" Import module
+function! Import() abort
+  " Create a mark at z
+  execute "normal! mz"
+
+  " Get the current filetype we are in
+  let l:filetype = &filetype
+
+  " Prompt from import questions
+  let l:import_item = input("Import what? ")
+  let l:import_package = input("From package? ")
+
+  if l:filetype == 'python'
+    if Trim(l:import_package) == ""
+      execute "normal! ggOimport ".l:import_item 
+    else
+      execute "normal! ggOfrom ".l:import_package." import ".l:import_item 
+    endif
+  elseif l:filetype == 'javascript'
+    execute "normal! ggOimport { ".l:import_item." } from ".l:import_package
+  else
+    " If the file is not supported, give the message
+    echo "Import not setup for filetype: ".l:filetype
+  endif
+
+  " Go go back to mark 
+  execute "normal! 'z"
 endfunction
 
 
@@ -111,7 +209,6 @@ function! InlineArguments()
     if len(arg) < 1
       continue
     endif
-    echo arg
 
     let l:arg_list[l:index] = arg
     let l:index = l:index + 1
@@ -210,7 +307,7 @@ function! Date()
 endfunction
 
 " Current time
-function! CurrentTime()
+function! Time()
   let time = strftime("%H:%M")
   echo "Today's time: ".time
   execute "normal! i".time
@@ -225,9 +322,26 @@ endfunction
 function! MarkDownLink()
   execute "normal! o- [](".@*.")\<esc>T["
 endfunction
-,
+
+" Calculate time for prefixed lines with time formatting. eg: 8h 10m
+function! GetMinutesForLinesWithPrefix(lines, prefix, separator) abort
+  let l:minutes = 0
+  for line in a:lines
+    if line =~ a:prefix
+      let time = split(line, a:separator)
+      # calculate minutes from hours
+      let add_minutes = str2nr(Trim(time[1]))*60
+      # add minutes and hours
+      let l:minutes += add_minutes + str2nr(Trim(time[2]))
+    endif
+  endfor
+
+  return l:minutes
+endfunction
+
 
 " Calculate week work time
+" Time formatting must follow example: 8h 10m
 function! CalculateWeekWorkTime()
   execute 'normal! mmggVG"gy`m'
   let all_text = @g
@@ -247,7 +361,57 @@ function! CalculateWeekWorkTime()
 
   let result = total_hours."h ".total_minutes."m"
 
-  execute "normal! 2GOWeek Total: ".result."\n"
+  execute "normal! 2GO\nWeek Total: ".result
+endfunction
+
+
+" Calculate time off for sick/pto
+function! CalculateTimeOff(type)
+  execute 'normal! mmggVG"gy`m'
+  let all_text = @g
+  let lines = split(all_text, '\n')
+
+  let l:time_off = 0
+  for line in lines
+    if line =~ "ooo:"
+      let items = split(line, ' ')
+      let value = Trim(items[1])
+      if value == a:type
+        let l:time_off += 8*60
+      endif
+    endif
+  endfor
+
+  return l:time_off
+endfunction
+
+
+function! CalculateWeekTimeOff()
+  execute 'normal! mmggVG"gy`m'
+  let all_text = @g
+  let lines = split(all_text, '\n')
+
+  let l:sick_time = CalculateTimeOff("sick")
+  let l:pto_time = CalculateTimeOff("pto")
+  let l:output = ""
+
+  if l:sick_time > 0
+    let sick_hours = l:sick_time/60
+    let sick_minutes = l:sick_time%60
+    let l:output = l:output."\nSick: ".sick_hours."h ".sick_minutes."m"
+  endif
+
+  if l:pto_time > 0
+    let pto_hours = l:pto_time/60
+    let pto_minutes = l:pto_time%60
+    let l:output = l:output."\nPTO: ".pto_hours."h ".pto_minutes."m"
+  endif
+
+  if len(l:output) > 0
+    execute "normal! 2GO\nWeek Time Off".l:output
+  else
+    echo "No time off" 
+  endif
 endfunction
 
 " Calcluate work time syntax 
@@ -295,6 +459,11 @@ function! DayHeader()
   execute "normal! i".header
 endfunction
 
+" Output week time summary
+function! CalculateWeekSummary()
+  call CalculateWeekTimeOff()
+  call CalculateWeekWorkTime()
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " Vim script utilities
@@ -322,6 +491,7 @@ function! FzfSpell()
   return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10})
 endfunction
 
+" Support trimming for older versions of Vim
 function! Trim(word) abort
   return substitute(a:word, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
