@@ -547,10 +547,17 @@ set viminfo^=%
 """"""""""""""""""""""""""""""""""""""""
 
 command! RFile call RemoveFile()
+command! Delete call RemoveFile()
 
 command! E Explore
 
 command! Date call Date()
+
+command! Time call Time()
+
+command! Import call Import()
+
+command! Dict call Dict()
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers

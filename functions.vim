@@ -142,6 +142,26 @@ function! Import() abort
   execute "normal! 'z"
 endfunction
 
+" Dictionary builder
+function! Dict()
+  " Get the current filetype we are in
+  let l:filetype = &filetype
+
+  if l:filetype == 'python'
+    execute "normal! idict("
+    let l:exit = ""
+
+    let key = input("Key: ")
+    while key != "q"
+      let value = input("Value: ")
+      execute "normal! o".key."=".value.","
+      let key = input("Key: ")
+    endwhile
+
+    execute "normal! o)"
+  endif
+endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " File management
