@@ -22,10 +22,10 @@ function! LogIt(isVisual) abort
   
   if l:filetype == 'vim'
     " output - echo expression
-    execute "normal! oecho ".l:message
+    execute "normal! oecho ".l:expression
   elseif l:filetype == 'sh'
     " output - echo expression
-    execute "normal! oecho $".l:message
+    execute "normal! oecho $".l:expression
   elseif l:filetype == 'python'
     " output - print('variable = ', variable)
     execute "normal! oprint('".l:message." = ', ".l:expression.")"
@@ -490,13 +490,13 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""
 
 " Copy current buffer path to multiple buffers
-" Author - Calvin Cieslak 
+" Author: Calvin Cieslak 
 function! CopyPath()
   execute "let @+=expand('%:p')"
 endfunction
 
 " Copy current buffer path directory to multiple buffers
-" Author - Calvin Cieslak
+" Author: Calvin Cieslak
 function! CopyPathDir()
   execute "let @+=expand('%:p:h')"
 endfunction
@@ -514,4 +514,22 @@ endfunction
 " Support trimming for older versions of Vim
 function! Trim(word) abort
   return substitute(a:word, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
+" Get visual selection
+" Author: IdanArye - https://stackoverflow.com/a/6271254
+function GetVisualSelection()
+  let [line_start, column_start] = getpos("'<")[1:2]
+  let [line_end, column_end] = getpos("'>")[1:2]
+  let lines = getline(line_start, line_end)
+
+  " Return nothing if no selection is available
+  if len(lines) == 0
+    return ''
+  endif
+
+  let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][column_start - 1:]
+  let result = join(lines, "\n")
+  return result
 endfunction
