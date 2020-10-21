@@ -517,7 +517,7 @@ function! Trim(word) abort
 endfunction
 
 " Get visual selection
-" Author: IdanArye - https://stackoverflow.com/a/6271254
+" Author: xolox - https://stackoverflow.com/a/6271254
 function GetVisualSelection()
   let [line_start, column_start] = getpos("'<")[1:2]
   let [line_end, column_end] = getpos("'>")[1:2]
@@ -531,5 +531,9 @@ function GetVisualSelection()
   let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
   let lines[0] = lines[0][column_start - 1:]
   let result = join(lines, "\n")
+
+  " Modification to script to clear register after getting the value
+  setreg("'<", [])
+  setreg("'>", [])
   return result
 endfunction
