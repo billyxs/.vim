@@ -26,7 +26,7 @@ function! LogIt(isVisual) abort
   elseif l:filetype == 'sh'
     " output - echo expression
     execute "normal! oecho $".l:message
-  elseif l:filetype == 'python'
+  elseif l:filetype == 'python' || l:filetype == 'php'
     " output - print('variable = ', variable)
     execute "normal! oprint('".l:message." = ', ".l:expression.")"
   elseif l:filetype == 'javascript'
