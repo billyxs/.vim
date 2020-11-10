@@ -515,8 +515,8 @@ nnoremap <leader>vt :VimuxInterruptRunner<CR>:call VimuxRunCommand("clear;make t
 
 " Work time tracking
 nnoremap <leader>dh :call DayHeader()<cr>
-nnoremap <leader>st istart:<space><space><esc>:call CurrentTime()<cr>
-nnoremap <leader>et iend:<space><space><esc>:call CurrentTime()<cr>
+nnoremap <leader>st istart:<space><space><esc>:call Time()<cr>
+nnoremap <leader>et iend:<space><space><esc>:call Time()<cr>
 vnoremap <leader>ct "gy:call CalculateWorkTime()<cr>
 
 " Specify the behavior when switching between buffers
@@ -547,10 +547,17 @@ set viminfo^=%
 """"""""""""""""""""""""""""""""""""""""
 
 command! RFile call RemoveFile()
+command! Delete call RemoveFile()
 
 command! E Explore
 
 command! Date call Date()
+
+command! Time call Time()
+
+command! Import call Import()
+
+command! Dict call Dict()
 
 """"""""""""""""""""""""""""""""""""""""
 "   => Buffers
