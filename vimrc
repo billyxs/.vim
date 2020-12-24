@@ -97,6 +97,7 @@ let g:ale_sign_column_always = 1
 " let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
 "
 let g:ale_fixers = { 'python': [ 'autopep8' ] }
+let g:ale_linters = { 'php': ['php', 'psalm'] }
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
@@ -596,7 +597,10 @@ augroup filetype_markdown
   nnoremap <leader>li :call MarkDownLink()<CR>
 
   autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
+augroup END
 
+augroup filetype_python
+  autocmd!
   " Abbreviations for python
   ab def def() -> None:<esc>F(i
   ab fix @fixture<esc>odef myfixture() -> Iterator:<esc>owith mock.patch("") as mock_object:<esc>oyield mock_object
