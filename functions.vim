@@ -12,14 +12,14 @@ function! LogIt(isVisual) abort
   if (a:isVisual)
     " Get register z
     let l:expression = @z
-    let l:message = ""
-  else 
+    let l:message = "s "
+  else
     " get current word under cursor
     " this is typically a variable we want to log
     let l:expression = expand("<cword>")
     let l:message = expression
   endif
-  
+
   if l:filetype == 'vim'
     " output - echo expression
     execute "normal! oecho ".l:expression
@@ -55,7 +55,7 @@ function! ForInList(visualSelection)
   " Is this a visual selection or not?
   if (a:visualSelection)
     " Get register z
-    let l:list = Trim(@z)
+    let l:list = Trim(GetVisualSelection())
   else
     " Get word under cursor for iterating over
     let l:word = Trim(expand("<cword>"))
@@ -69,7 +69,7 @@ function! ForInList(visualSelection)
   if l:list[-1:] == "s"
     let l:item = l:list[0:-2]
   endif
-  
+
   if l:filetype == 'python'
     " output - print('variable = ', variable)
     execute "normal! ofor ".l:item." in ".l:list.":"
@@ -93,7 +93,7 @@ function! ForInKeyValue(visualSelection) abort
   " Is this a visual selection or not?
   if (a:visualSelection)
     " Get register z
-    let l:list = Trim(@z)
+    let l:list = Trim(GetVisualSelection())
   else
     " get current word under cursor
     " this is typically a variable we want to log
@@ -127,9 +127,9 @@ function! Import() abort
 
   if l:filetype == 'python'
     if Trim(l:import_package) == ""
-      execute "normal! ggOimport ".l:import_item 
+      execute "normal! ggOimport ".l:import_item
     else
-      execute "normal! ggOfrom ".l:import_package." import ".l:import_item 
+      execute "normal! ggOfrom ".l:import_package." import ".l:import_item
     endif
   elseif l:filetype == 'javascript'
     execute "normal! ggOimport { ".l:import_item." } from ".l:import_package
@@ -138,7 +138,7 @@ function! Import() abort
     echo "Import not setup for filetype: ".l:filetype
   endif
 
-  " Go go back to mark 
+  " Go go back to mark
   execute "normal! 'z"
 endfunction
 
@@ -210,11 +210,11 @@ endfunction
 " Argument/Dictionary formatters
 
 function! InlineArguments()
-  " Copy the args list to 'z' register
-  execute 'normal! vi("zy'
+  " Create a visual selction of the arguments in braces
+  execute 'normal! vi('
 
-  " Create list splitting by newline
-  let lines = split(@z, '\n')
+  " Create list splitting the selction by newline
+  let lines = split(GetVisualSelection(), '\n')
 
   " Create a new arg list for output
   let l:arg_list = map(range(len(lines)), 0)
@@ -413,6 +413,7 @@ function! CalculateWeekTimeOff()
 
   let l:sick_time = CalculateTimeOff("sick")
   let l:pto_time = CalculateTimeOff("pto")
+  let l:holiday_time = CalculateTimeOff("holiday")
   let l:output = ""
 
   if l:sick_time > 0
@@ -427,20 +428,26 @@ function! CalculateWeekTimeOff()
     let l:output = l:output."\nPTO: ".pto_hours."h ".pto_minutes."m"
   endif
 
+  if l:holiday_time > 0
+    let holiday_hours = l:holiday_time/60
+    let holiday_minutes = l:holiday_time%60
+    let l:output = l:output."\nHoliday: ".holiday_hours."h ".holiday_minutes."m"
+  endif
+
   if len(l:output) > 0
     execute "normal! 2GO\nWeek Time Off".l:output
   else
-    echo "No time off" 
+    echo "No time off"
   endif
 endfunction
 
-" Calcluate work time syntax 
+" Calcluate work time syntax
 function! CalculateWorkTime()
   " Get visual selection
   let expression = @g
   let rows = split(expression, '\n')
 
-  let l:start_hours = 0 
+  let l:start_hours = 0
   let l:start_mins = 0
   let l:total_time = 0
   let error = 0
@@ -490,7 +497,7 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""
 
 " Copy current buffer path to multiple buffers
-" Author: Calvin Cieslak 
+" Author: Calvin Cieslak
 function! CopyPath()
   execute "let @+=expand('%:p')"
 endfunction

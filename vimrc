@@ -119,7 +119,7 @@ let g:jsx_ext_required = 0
 let g:used_javascript_libs = 'react'
 
 " python-mode set for python3
-let g:pymode_python = 'python3'
+" let g:pymode_python = 'python3'
 
 " Themes
 " neodark
@@ -292,6 +292,8 @@ set ffs=unix,dos,mac
 """"""""""""""""""""""""""""""""""""""""
 
 " Enable syntax highlighting / better than syntax on
+filetype plugin on
+syntax on
 if !exists(g:syntax_on)|syntax enable|endif
 
 if (has("termguicolors"))
@@ -441,7 +443,7 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
-" Full screen window 
+" Full screen window
 nnoremap <c-m> <c-w>\|
 " Equal width windows
 nnoremap <c-n> <c-w>=
@@ -573,50 +575,9 @@ autocmd BufNewFile,BufRead *.py set ft=python
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" Javascript
-augroup filetype_javascript
-  autocmd!
-
-  command! Lintjs call Lintjs()
-  command! Lintjsp call Lintjsp()
-  command! Lintts call Lintts()
-
-  " autocmd FileType javascript set formatprg=prettier\ --stdin
-  " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
-
-  " Import modules for javascript
-  autocmd Filetype javascript :iabbrev im import<space><space>from<space><left><left><left><left><left><left><left>
-
-  " Export modules and functions for javascript
-  autocmd Filetype javascript :iabbrev exc export const =
-  autocmd Filetype javascript :iabbrev exf export function() {}
-  autocmd Filetype javascript :iabbrev exd export default
-  autocmd Filetype javascript nnoremap <leader>c I//<esc>
-augroup END
-
-
-augroup filetype_markdown
-  autocmd!
-  nnoremap <leader>li :call MarkDownLink()<CR>
-
-  autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
-augroup END
-
-augroup filetype_python
-  autocmd!
-  " Abbreviations for python
-  ab def def() -> None:<esc>F(i
-  ab fix @fixture<esc>odef myfixture() -> Iterator:<esc>owith mock.patch("") as mock_object:<esc>oyield mock_object
-  ab import from import
-  ab typing from typing import<space>
-  ab typeddict class Item(TypedDict):
-  ab class class Name():<esc>F<space>
-augroup END
-
 source ~/.vim/functions.vim
 
 """""""""""""""""""""""""""""""""""""""""
 :finish
 
 Vim built the hard way
-
