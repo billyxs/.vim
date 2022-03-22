@@ -43,6 +43,7 @@ Plug 'wikitopian/hardmode'
 
 " Formatting
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'davidhalter/jedi-vim'
 
 " Time tracking
 " Plug 'wakatime/vim-wakatime'
@@ -100,6 +101,10 @@ let g:ale_fixers = {
 \  'javascript': [ 'eslint' ],
 \  'python': [ 'autopep8' ],
 \  'php': ['php', 'psalm'],
+\}
+
+let g:ale_linters = {
+\   'javascript': ['flow-language-server'],
 \}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
@@ -168,7 +173,7 @@ set mouse=n
 set path+=**
 
 " Show line numbers
-"set number
+set number
 
 " Show line numbers relative to cursor
 "set relativenumber
@@ -181,9 +186,6 @@ set ruler
 
 " Set 5 lines to the cursor - when moving vertically using j/k
 set so=5
-
-" Turn on the WiLd menu
-set wildmenu
 
 " Height of the command bar
 set cmdheight=2
@@ -229,9 +231,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Ignore files
-set wildignore+=*/lib,*/.git,*/coverage,*/node_modules,*/tmp/*,*.so,*.swp,*.zip
-
 " Don't auto indent
 set noai
 
@@ -245,6 +244,21 @@ set shiftwidth=2
 
 " tabs to spaces
 retab
+
+" Ignore files
+set wildignore+=*/lib,*/.git,*/coverage,**/node_modules,**/virtualenv_run,*/tmp/*,*.so,*.swp,*.zip
+
+" Wildmenu config - https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+
+" Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
+
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+" END Wildmenu config
 
 " remove trailing spaces on :w
 autocmd FileType javascript autocmd BufWritePre <buffer> %s/\s\+$//e
@@ -574,6 +588,35 @@ command! Dict call Dict()
 autocmd BufNewFile,BufRead *.py set ft=python
 autocmd BufNewFile,BufRead *.js set ft=javascript
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Javascript
+augroup filetype_javascript
+  autocmd!
+
+  command! Lintjs call Lintjs()
+  command! Lintjsp call Lintjsp()
+  command! Lintts call Lintts()
+
+  " autocmd FileType javascript set formatprg=prettier\ --stdin
+  " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
+  " Import modules for javascript
+  autocmd Filetype javascript :iabbrev im import<space><space>from<space><left><left><left><left><left><left><left>
+
+  " Export modules and functions for javascript
+  autocmd Filetype javascript :iabbrev exc export const =
+  autocmd Filetype javascript :iabbrev exf export function() {}
+  autocmd Filetype javascript :iabbrev exd export default
+  autocmd Filetype javascript nnoremap <leader>c I//<esc>
+augroup END
+
+
+augroup filetype_markdown
+  autocmd!
+  nnoremap <leader>li :call MarkDownLink()<CR>
+
+  autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
+augroup END
 
 source ~/.vim/functions.vim
 
