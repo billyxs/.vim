@@ -307,7 +307,6 @@ set ffs=unix,dos,mac
 
 " Enable syntax highlighting / better than syntax on
 filetype plugin on
-syntax on
 if !exists(g:syntax_on)|syntax enable|endif
 
 if (has("termguicolors"))
@@ -614,7 +613,7 @@ augroup END
 augroup filetype_markdown
   autocmd!
   nnoremap <leader>li :call MarkDownLink()<CR>
-
+  inoremap link -<space>[]()<esc><left>p<left>
   autocmd Filetype *.md :inoremap link -<space>[]()<esc><left>p<left>
 augroup END
 
