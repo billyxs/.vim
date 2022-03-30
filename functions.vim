@@ -525,7 +525,7 @@ endfunction
 
 " Get visual selection
 " Author: xolox - https://stackoverflow.com/a/6271254
-function GetVisualSelection()
+function! GetVisualSelection()
   let [line_start, column_start] = getpos("'<")[1:2]
   let [line_end, column_end] = getpos("'>")[1:2]
   let lines = getline(line_start, line_end)
