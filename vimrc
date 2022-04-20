@@ -81,7 +81,7 @@ Plug 'rakr/vim-one'
 Plug 'mhartington/oceanic-next'
 Plug 'arcticicestudio/nord-vim'
 Plug 'kadekillary/Turtles'
-Plug 'embark-theme/vim', { 'as': 'embark' }
+" Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'cormacrelf/vim-colors-github'
 call plug#end()
 
