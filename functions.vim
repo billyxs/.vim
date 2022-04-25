@@ -29,7 +29,7 @@ function! LogIt(isVisual) abort
   elseif l:filetype == 'python'
     " output - print('variable = ', variable)
     execute "normal! oprint('".l:message." = ', ".l:expression.")"
-  elseif l:filetype == 'javascript'
+  elseif l:filetype == 'javascript' || l:filetype == 'typescript'
     " output - console.log('variable = ', variable)
     execute "normal! oconsole.log('".l:message." = ', ".l:expression.")"
   else

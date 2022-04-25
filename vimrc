@@ -92,13 +92,10 @@ let g:ale_sign_warning = '--'
 let g:ale_sign_column_always = 1
 
 " :ALEFix will try and fix your JS code with ESLint.
-" let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint' ] }
-" let g:ale_fixers = { 'javascript': [ 'prettier', 'tslint' ] }
 " let g:ale_pattern_options = {'\.test.js$': {'ale_enabled': 0}}
-"
 let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'javascript': [ 'eslint' ],
+\  'javascript': [ 'prettier', 'eslint' ],
 \  'python': [ 'autopep8' ],
 \  'php': ['php', 'psalm'],
 \}
